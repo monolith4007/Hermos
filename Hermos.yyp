@@ -11,6 +11,7 @@
   "defaultScriptType":1,
   "Folders":[
     {"$GMFolder":"","%Name":"Global","folderPath":"folders/Global.yy","name":"Global","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Audio","folderPath":"folders/Global/Audio.yy","name":"Audio","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Input","folderPath":"folders/Global/Input.yy","name":"Input","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Player","folderPath":"folders/Player.yy","name":"Player","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Animations","folderPath":"folders/Player/Animations.yy","name":"Animations","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -32,6 +33,7 @@
   "name":"Hermos",
   "resources":[
     {"id":{"name":"ctrlInput","path":"objects/ctrlInput/ctrlInput.yy",},},
+    {"id":{"name":"ctrlMusic","path":"objects/ctrlMusic/ctrlMusic.yy",},},
     {"id":{"name":"ctrlWindow","path":"objects/ctrlWindow/ctrlWindow.yy",},},
     {"id":{"name":"objCamera","path":"objects/objCamera/objCamera.yy",},},
     {"id":{"name":"objPlayer","path":"objects/objPlayer/objPlayer.yy",},},
@@ -39,6 +41,7 @@
     {"id":{"name":"objZoneObject","path":"objects/objZoneObject/objZoneObject.yy",},},
     {"id":{"name":"rmStartup","path":"rooms/rmStartup/rmStartup.yy",},},
     {"id":{"name":"rmTest","path":"rooms/rmTest/rmTest.yy",},},
+    {"id":{"name":"AudioPlayback","path":"scripts/AudioPlayback/AudioPlayback.yy",},},
     {"id":{"name":"GameStartup","path":"scripts/GameStartup/GameStartup.yy",},},
     {"id":{"name":"InputChecking","path":"scripts/InputChecking/InputChecking.yy",},},
     {"id":{"name":"PlayerAirStates","path":"scripts/PlayerAirStates/PlayerAirStates.yy",},},

@@ -20,5 +20,10 @@ surface_depth_disable(true);
 gc_target_frame_time(-100);
 randomize();
 
+// Audio
+audio_channel_num(12);
+volume_sound = 1;
+volume_music = 1;
+
 // Start the game!
 call_later(1, time_source_units_frames, room_goto_next);
