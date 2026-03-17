@@ -1,7 +1,7 @@
 /// @description Plays the given sound effect, first stopping any existing instances of it.
 /// @param {Asset.GMSound} ind Sound effect to play.
 /// @returns {Id.Sound}
-function audio_play(ind)
+function audio_play_sfx(ind)
 {
 	audio_stop_sound(ind);
 	return audio_play_sound(ind, 1, false, global.volume_sound);
@@ -21,10 +21,10 @@ function audio_play_jingle(ind)
 	}
 }
 
-/// @description Adds the given music track to the playlist, playing it if it has the highest priority.
+/// @description Adds the given music track to the playlist at the given priority. The track is played if it has the highest priority.
 /// @param {Asset.GMSound} ind Music track to add.
 /// @param {Real} priority Priority value to assign.
-function audio_enqueue_music(ind, priority)
+function audio_enqueue_bgm(ind, priority)
 {
 	with (ctrlMusic)
 	{
@@ -40,9 +40,9 @@ function audio_enqueue_music(ind, priority)
 	}
 }
 
-/// @description Removes the given music track from the playlist. If it was playing, the next track below is then played.
+/// @description Removes the given music track from the playlist. If it was playing, the track below is played next.
 /// @param {Asset.GMSound} ind Music track to remove.
-function audio_dequeue_music(ind)
+function audio_dequeue_bgm(ind)
 {
 	with (ctrlMusic)
 	{
