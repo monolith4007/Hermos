@@ -7,7 +7,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Parents",
-    "path":"folders/Zone/Parents.yy",
+    "path":"folders/Zone/Objects/Parents.yy",
   },
   "parentObjectId":{
     "name":"objZoneObject",

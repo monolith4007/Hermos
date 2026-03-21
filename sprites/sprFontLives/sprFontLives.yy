@@ -34,8 +34,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Fonts",
-    "path":"folders/Zone/HUD/Fonts.yy",
+    "name":"Sprites",
+    "path":"folders/Zone/HUD/Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
