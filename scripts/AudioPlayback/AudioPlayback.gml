@@ -1,4 +1,4 @@
-/// @description Plays the given sound effect, first stopping any existing instances of it.
+/// @description Plays a single instance of the given sound effect.
 /// @param {Asset.GMSound} ind Sound effect to play.
 /// @returns {Id.Sound}
 function audio_play_sfx(ind)

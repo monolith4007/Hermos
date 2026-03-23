@@ -51,11 +51,11 @@ player_escape_wall = function ()
 };
 
 /// @method player_ground
-/// @description Aligns the player to the ground and updates their angle values should they land, otherwise they are detached.
-/// @param {Bool} land Whether to stick to the ground.
-player_ground = function (land)
+/// @description Aligns the player to the ground and updates their angle values, if applicable; detaches them otherwise.
+/// @param {Bool} attach Whether to stick to the ground.
+player_ground = function (attach)
 {
-	if (not land)
+	if (not attach)
 	{
 		on_ground = false;
 		objCamera.on_ground = false;
@@ -241,8 +241,8 @@ player_keep_in_bounds = function ()
 };
 
 /// @method player_perform
-/// @description Sets the given function as the player's current state.
-/// @param {Function} action State function to set.
+/// @description Switches the player's state to the given function.
+/// @param {Function} action State function to switch to.
 player_perform = function (action)
 {
 	state(PHASE.EXIT);
@@ -286,7 +286,7 @@ player_resist_slope = function (force)
 };
 
 /// @method player_animate
-/// @description Records the player's current animation as the given string, and sets the timeline assigned to that string from the player's `animations` struct.
+/// @description Records the player's animation as the given string and sets the corresponding timeline from their `animations` struct.
 /// @param {String} name Name of the animation.
 player_animate = function (name)
 {
