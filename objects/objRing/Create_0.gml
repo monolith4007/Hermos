@@ -1,5 +1,5 @@
 /// @description Initialize
-image_speed = 0;
+image_speed = 0.125;
 reaction = function (ind)
 {
 	// Abort if not intersecting
