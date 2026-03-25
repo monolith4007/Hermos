@@ -13,6 +13,7 @@ spindash_charge = 0;
 rotation_lock_time = 0;
 control_lock_time = 0;
 recovery_time = 0;
+superspeed_time = 0;
 
 camera_look_delay = 120;
 camera_look_time = camera_look_delay;

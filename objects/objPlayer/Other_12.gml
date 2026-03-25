@@ -269,6 +269,15 @@ player_refresh_physics = function ()
 	recoil_gravity = 0.1875;
 	jump_height = 6.5;
 	jump_release = 4;
+	
+	// Superspeed modification
+	if (superspeed_time > 0)
+	{
+		speed_cap *= 2;
+		acceleration *= 2;
+		air_acceleration *= 2;
+		roll_friction *= 2;
+	}
 };
 
 player_refresh_physics();
