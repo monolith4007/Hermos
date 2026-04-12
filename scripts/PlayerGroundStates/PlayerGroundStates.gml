@@ -147,16 +147,13 @@ function player_is_running(phase)
 			if (not on_ground) return player_perform(player_is_falling);
 			
 			// Slide down steep slopes
-			if (abs(x_speed) < slide_threshold)
+			if (abs(x_speed) < slide_threshold and local_direction >= 45 and local_direction <= 315)
 			{
 				if (local_direction >= 90 and local_direction <= 270)
 				{
 					return player_perform(player_is_falling);
 				}
-				else if (local_direction >= 45 and local_direction <= 315)
-				{
-					control_lock_time = slide_duration;
-				}
+				control_lock_time = slide_duration;
 			}
 			
 			// Stand
@@ -173,7 +170,7 @@ function player_is_running(phase)
 			}
 			
 			// Animate
-			if (can_brake and animation == "brake" and mask_direction == gravity_direction and timeline_position < timeline_max_moment(timeline_index))
+			if (can_brake and animation == "brake" and mask_direction == gravity_direction and timeline_position <= timeline_max_moment(timeline_index))
 			{
 				if (timeline_position mod 4 == 0)
 				{
@@ -359,16 +356,13 @@ function player_is_rolling(phase)
 			if (not on_ground) return player_perform(player_is_falling);
 			
 			// Slide down steep slopes
-			if (abs(x_speed) < slide_threshold)
+			if (abs(x_speed) < slide_threshold and local_direction >= 45 and local_direction <= 315)
 			{
 				if (local_direction >= 90 and local_direction <= 270)
 				{
 					return player_perform(player_is_falling);
 				}
-				else if (local_direction >= 45 and local_direction <= 315)
-				{
-					control_lock_time = slide_duration;
-				}
+				control_lock_time = slide_duration;
 			}
 			
 			// Unroll
