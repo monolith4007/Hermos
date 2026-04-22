@@ -153,26 +153,9 @@ player_rotate_mask = function ()
 
 /// @method player_keep_in_bounds
 /// @description Confines the player within the bounds of the camera.
-/// @returns {Bool} Whether the player is above the bottom bound relative to their gravity direction.
+/// @returns {Bool} Whether the player is above the 'bottom' bound relative to their gravity direction.
 player_keep_in_bounds = function ()
 {
-	// Calculate area of virtual mask and bounds
-	var vertical = gravity_direction mod 180 == 0;
-	if (vertical)
-	{
-		var x1 = x - x_radius;
-		var y1 = y - y_radius;
-		var x2 = x + x_radius;
-		var y2 = y + y_radius;
-	}
-	else
-	{
-		var x1 = x - y_radius;
-		var y1 = y - x_radius;
-		var x2 = x + y_radius;
-		var y2 = y + x_radius;
-	}
-	
 	with (objCamera)
 	{
 		var left = bound_left;
@@ -181,32 +164,21 @@ player_keep_in_bounds = function ()
 		var bottom = bound_bottom;
 	}
 	
-	// Check if already inside (early out)
-	if (rectangle_in_rectangle(x1, y1, x2, y2, left, top, right, bottom) == 1)
+	if (gravity_direction mod 180 == 0)
 	{
-		return true;
-	}
-	
-	// Reposition
-	if (vertical)
-	{
-		if (x1 < left)
+		var limit = median(left + x_radius, x, right - x_radius);
+		if (x != limit)
 		{
-			x = left + x_radius;
-			x_speed = 0;
-		}
-		else if (x2 > right)
-		{
-			x = right - x_radius;
+			x = limit;
 			x_speed = 0;
 		}
 		
-		if (y1 > bottom and gravity_direction == 0)
+		if (y - y_radius > bottom and gravity_direction == 0)
 		{
 			y = bottom + y_radius;
 			return false;
 		}
-		else if (y2 < top and gravity_direction == 180)
+		else if (y + y_radius < top and gravity_direction == 180)
 		{
 			y = top - y_radius;
 			return false;
@@ -214,23 +186,19 @@ player_keep_in_bounds = function ()
 	}
 	else
 	{
-		if (y1 < top)
+		var limit = median(top + x_radius, y, bottom - x_radius);
+		if (y != limit)
 		{
-			y = top + x_radius;
-			x_speed = 0;
-		}
-		else if (y2 > bottom)
-		{
-			y = bottom - x_radius;
+			y = limit;
 			x_speed = 0;
 		}
 		
-		if (x1 > right and gravity_direction == 90)
+		if (x - y_radius > right and gravity_direction == 90)
 		{
 			x = right + y_radius;
 			return false;
 		}
-		else if (x2 < left and gravity_direction == 270)
+		else if (x + y_radius < left and gravity_direction == 270)
 		{
 			x = left - y_radius;
 			return false;
