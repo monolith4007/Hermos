@@ -176,5 +176,5 @@ player_calc_tile_normal = function (ox, oy)
 		}
 	}
 	
-	return point_direction(sensor_x[0], sensor_y[0], sensor_x[1], sensor_y[1]) div 1;
+	return round(point_direction(sensor_x[0], sensor_y[0], sensor_x[1], sensor_y[1]));
 };

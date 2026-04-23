@@ -187,7 +187,10 @@ function player_is_running(phase)
 				var new_anim = speed_int < 6 ? "walk" : "run";
 				if (animation != new_anim) player_animate(new_anim);
 				timeline_speed = 1 / max(8 - speed_int, 1);
-				image_angle = direction;
+				
+				// Update visual angle
+				var target_angle = local_direction >= 34 and local_direction <= 326 ? direction : gravity_direction;
+				image_angle += angle_difference(target_angle, image_angle) / (speed_int < 6 ? 4 : 2);
 			}
 			break;
 		}

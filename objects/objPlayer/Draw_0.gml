@@ -3,7 +3,7 @@ var x_int = x div 1;
 var y_int = y div 1;
 
 // Sprite
-if (sprite_index != -1) draw_sprite_ext(sprite_index, image_index, x_int, y_int, image_xscale, 1, round(image_angle / 45) * 45, c_white, image_alpha);
+if (sprite_index != -1) draw_sprite_ext(sprite_index, image_index, x_int, y_int, image_xscale, 1, image_angle, c_white, image_alpha);
 
 // Dash smoke
 if (state == player_is_spindashing)
