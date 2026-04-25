@@ -96,9 +96,6 @@ function player_is_running(phase)
 			// Jump
 			if (input_check_pressed(INPUT.ACTION)) return player_perform(player_is_jumping);
 			
-			// Apply slope friction
-			player_resist_slope(0.125);
-			
 			// Handle ground motion
 			var can_brake = animation == "brake";
 			var input_sign = input_check(INPUT.RIGHT) - input_check(INPUT.LEFT);
@@ -131,6 +128,9 @@ function player_is_running(phase)
 					x_speed -= min(abs(x_speed), acceleration) * sign(x_speed);
 				}
 			}
+			
+			// Slope friction
+			player_resist_slope(0.125);
 			
 			// Roll
 			if (input_sign == 0 and abs(x_speed) >= roll_threshold and input_check(INPUT.DOWN))
@@ -329,10 +329,6 @@ function player_is_rolling(phase)
 			// Jump
 			if (input_check_pressed(INPUT.ACTION)) return player_perform(player_is_jumping);
 			
-			// Apply slope friction
-			var slope_friction = sign(x_speed) == sign(dsin(local_direction)) ? 0.078125 : 0.3125; // Uphill / downhill
-			player_resist_slope(slope_friction);
-			
 			// Decelerate
 			if (control_lock_time == 0)
 			{
@@ -350,6 +346,10 @@ function player_is_rolling(phase)
 			
 			// Friction
 			x_speed -= min(abs(x_speed), roll_friction) * sign(x_speed);
+			
+			// Slope friction
+			var slope_friction = sign(x_speed) == sign(dsin(local_direction)) ? 0.078125 : 0.3125; // Uphill / downhill
+			player_resist_slope(slope_friction);
 			
 			// Move
 			player_move_on_ground();
