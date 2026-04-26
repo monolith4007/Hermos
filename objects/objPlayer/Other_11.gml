@@ -137,25 +137,24 @@ player_get_collisions = function ()
 /// @description Calculates the surface normal of the tiles found within the 16x16 area relative to the given point.
 /// @param {Real} x x-coordinate of the point.
 /// @param {Real} y y-coordinate of the point.
-/// @param {Real} [dir] Direction to extend the angle sensors (optional, default is the player's mask direction).
 /// @returns {Real}
-player_calc_tile_normal = function (ox, oy, dir = mask_direction)
+player_calc_tile_normal = function (ox, oy)
 {
-	var sine = dsin(dir);
-	var cosine = dcos(dir);
+	var sine = dsin(mask_direction);
+	var cosine = dcos(mask_direction);
 	
 	// Set up angle sensors, one at each end of a tile
 	if (sine == 0)
 	{
 		var sensor_y = array_create(2, oy);
 		var sensor_x = array_create(2, ox - ox mod 16);
-		sensor_x[dir == 0] += 15;
+		sensor_x[mask_direction == 0] += 15;
 	}
 	else
 	{
 		var sensor_x = array_create(2, ox);
 		var sensor_y = array_create(2, oy - oy mod 16);
-		sensor_y[dir == 270] += 15;
+		sensor_y[mask_direction == 270] += 15;
 	}
 	
 	// Extend / regress angle sensors
