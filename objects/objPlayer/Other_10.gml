@@ -111,18 +111,16 @@ player_move_in_air = function ()
 		// Land
 		if (landed)
 		{
-			// Stay flat on solid objects
+			// Disable angle detection on objects / set new horizontal speed
 			if (ground_id != noone)
 			{
 				direction = gravity_direction;
 				local_direction = 0;
 			}
-			
-			// Calculate new horizontal speed
-			if (abs(x_speed) <= abs(y_speed) and local_direction >= 22.5 and local_direction <= 337.5)
+			else if (local_direction >= 23 and local_direction <= 337 and abs(x_speed) <= abs(y_speed))
 			{
-				x_speed = -y_speed * sign(dsin(local_direction));
-				if (local_direction < 45 or local_direction > 315) x_speed *= 0.5;
+				x_speed = local_direction < 180 ? -y_speed : y_speed;
+				if (mask_direction == gravity_direction) x_speed *= 0.5;
 			}
 			
 			// Stop falling, and abort

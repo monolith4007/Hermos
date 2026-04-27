@@ -249,7 +249,7 @@ player_refresh_physics();
 player_resist_slope = function (force)
 {
 	// Abort if moving along a shallow floor or ceiling
-	if (local_direction < 22.5 or local_direction > 337.5) exit;
+	if (local_direction < 23 or local_direction > 337) exit;
 	if (local_direction >= 135 and local_direction <= 225) exit;
 	
 	x_speed -= dsin(local_direction) * force;
