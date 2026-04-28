@@ -139,6 +139,33 @@ function player_is_running(phase)
 				return player_perform(player_is_rolling);
 			}
 			
+			// Animate
+			if (can_brake and animation == "brake" and mask_direction == gravity_direction and timeline_position <= timeline_max_moment(timeline_index))
+			{
+				if (timeline_position mod 4 == 0)
+				{
+					// Kick up dust
+					var offset = y_radius - 6;
+					var px = x + dsin(direction) * offset;
+					var py = y + dcos(direction) * offset;
+					particle_spawn("brake_dust", px, py);
+				}
+			}
+			else
+			{
+				var velocity = abs(x_speed) div 1;
+				var new_anim = velocity < 6 ? "walk" : "run";
+				if (animation != new_anim) player_animate(new_anim);
+				timeline_speed = 1 / max(8 - velocity, 1);
+				
+				// Update visual angle
+				var target_angle = local_direction >= 34 and local_direction <= 326 ? direction : gravity_direction;
+				if (image_angle != target_angle)
+				{
+					image_angle += angle_difference(target_angle, image_angle) / (velocity < 6 ? 4 : 2);
+				}
+			}
+			
 			// Move
 			player_move_on_ground();
 			if (state_changed) exit;
@@ -167,33 +194,6 @@ function player_is_running(phase)
 				timeline_speed = 1;
 				image_angle = gravity_direction;
 				image_xscale = -input_sign;
-			}
-			
-			// Animate
-			if (can_brake and animation == "brake" and mask_direction == gravity_direction and timeline_position <= timeline_max_moment(timeline_index))
-			{
-				if (timeline_position mod 4 == 0)
-				{
-					// Kick up dust
-					var offset = y_radius - 6;
-					var px = x + dsin(direction) * offset;
-					var py = y + dcos(direction) * offset;
-					particle_spawn("brake_dust", px, py);
-				}
-			}
-			else
-			{
-				var speed_int = abs(x_speed) div 1;
-				var new_anim = speed_int < 6 ? "walk" : "run";
-				if (animation != new_anim) player_animate(new_anim);
-				timeline_speed = 1 / max(8 - speed_int, 1);
-				
-				// Update visual angle
-				var target_angle = local_direction >= 34 and local_direction <= 326 ? direction : gravity_direction;
-				if (image_angle != target_angle)
-				{
-					image_angle += angle_difference(target_angle, image_angle) / (speed_int < 6 ? 4 : 2);
-				}
 			}
 			break;
 		}
