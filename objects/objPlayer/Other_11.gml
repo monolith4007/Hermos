@@ -135,6 +135,12 @@ player_get_collisions = function ()
 		if (ind.semisolid and collision_rectangle(x1, y1, x2, y2, ind, true, false) != noone) continue;
 		
 		array_push(hard_colliders, ind);
+		
+		// Update current ground
+		if (ground_id != ind and player_boxcast(ind, y_radius + on_ground))
+		{
+			ground_id = ind;
+		}
 	}
 };
 

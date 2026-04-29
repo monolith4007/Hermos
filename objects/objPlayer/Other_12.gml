@@ -57,6 +57,7 @@ player_ground = function (attach)
 {
 	if (not attach)
 	{
+		ground_id = noone;
 		on_ground = false;
 		objCamera.on_ground = false;
 		mask_direction = gravity_direction;
@@ -87,13 +88,8 @@ player_ground = function (attach)
 		else break;
 	}
 	
-	// Update current ground and angle values
-	ground_id = instance_place(x div 1 + sine, y div 1 + cosine, hard_colliders);
-	if (not instance_exists(ground_id))
-	{
-		ground_id = noone;
-		player_detect_angle();
-	}
+	// Update angle values
+	if (ground_id == noone) player_detect_angle();
 };
 
 /// @method player_detect_angle
