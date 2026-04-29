@@ -137,7 +137,7 @@ player_get_collisions = function ()
 		array_push(hard_colliders, ind);
 		
 		// Update current ground
-		if (ground_id != ind and player_boxcast(ind, y_radius + on_ground))
+		if (ground_id != ind and y_speed >= 0 and player_boxcast(ind, y_radius + on_ground))
 		{
 			ground_id = ind;
 		}
