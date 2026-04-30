@@ -52,15 +52,10 @@ player_linecast = function (ind, xrad = x_wall_radius)
 {
 	var x_int = x div 1;
 	var y_int = y div 1;
-	var sine = dsin(mask_direction);
-	var cosine = dcos(mask_direction);
 	
-	var x1 = x_int - cosine * xrad;
-	var y1 = y_int + sine * xrad;
-	var x2 = x_int + cosine * xrad;
-	var y2 = y_int - sine * xrad;
-	
-	return collision_line(x1, y1, x2, y2, ind, true, false) != noone;
+	return mask_direction mod 180 == 0 ?
+		collision_line(x_int - xrad, y_int, x_int + xrad, y_int, ind, true, false) != noone :
+		collision_line(x_int, y_int - xrad, x_int, y_int + xrad, ind, true, false) != noone;
 };
 
 /// @method player_raycast
