@@ -57,7 +57,6 @@ player_ground = function (attach)
 {
 	if (not attach)
 	{
-		ground_id = noone;
 		on_ground = false;
 		objCamera.on_ground = false;
 		mask_direction = gravity_direction;

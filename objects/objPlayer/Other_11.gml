@@ -119,6 +119,8 @@ player_get_collisions = function ()
 		collision_rectangle_list(x_int - x_wall_radius, y_int - y_radius - 1, x_int + x_wall_radius, y_int + y_radius + 1, objZoneObject, true, false, instances, false) :
 		collision_rectangle_list(x_int - y_radius - 1, y_int - x_wall_radius, x_int + y_radius + 1, y_int + x_wall_radius, objZoneObject, true, false, instances, false);
 	
+	ground_id = noone;
+	
 	// Execute reactions
 	for (var n = 0; n < total; ++n)
 	{
@@ -132,7 +134,7 @@ player_get_collisions = function ()
 		array_push(hard_colliders, ind);
 		
 		// Update current ground
-		if (ground_id != ind and y_speed >= 0 and player_boxcast(ind, y_radius + on_ground))
+		if (ground_id == noone and y_speed >= 0 and player_boxcast(ind, y_radius + on_ground))
 		{
 			ground_id = ind;
 		}
