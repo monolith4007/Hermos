@@ -1,15 +1,15 @@
 /// @description Setters
 
 /// @method player_escape_wall
-/// @description Moves the player's wall sensor out of collision with any walls.
+/// @description Moves the 'arms' of the player's virtual mask out of collision with the given wall.
+/// @param {Id.Instance|Id.TileMapElement} ind Instance or tilemap to escape.
 /// @returns {Real|Undefined} Sign of the wall from the player, or undefined on failure to reposition.
-player_escape_wall = function ()
+player_escape_wall = function (ind)
 {
 	var x_int = x div 1;
 	var y_int = y div 1;
 	var sine = dsin(mask_direction);
 	var cosine = dcos(mask_direction);
-	var ind = hard_colliders; //instance_place(x_int, y_int, hard_colliders);
 	
 	if (collision_point(x_int, y_int, ind, true, false) == noone)
 	{
@@ -79,16 +79,30 @@ player_ground = function (attach)
 	
 	repeat (y_snap_distance - 1)
 	{
-		if (not player_boxcast(hard_colliders, y_radius + 1))
+		ground_id = player_boxcast(hard_colliders, y_radius + 1, true);
+		if (ground_id == noone)
 		{
 			x += sine;
 			y += cosine;
 		}
-		else break;
+		else
+		{
+			// Reset ground instance
+			if (not instance_exists(ground_id)) ground_id = noone;
+			break;
+		}
 	}
 	
 	// Update angle values
-	if (ground_id == noone) player_detect_angle();
+	if (ground_id == noone)
+	{
+		player_detect_angle();
+	}
+	else if (landed)
+	{
+		direction = gravity_direction;
+		local_direction = 0;
+	}
 };
 
 /// @method player_detect_angle

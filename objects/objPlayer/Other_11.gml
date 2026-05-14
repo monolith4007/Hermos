@@ -21,8 +21,9 @@ player_intersect = function (ind, xrad = x_radius, yrad = y_radius)
 /// @description Checks if the given collider's mask intersects a vertical portion of the player's virtual mask.
 /// @param {Asset.GMObject|Id.Instance|Id.TileMapElement|Array} ind Object, instance, or tilemap to check, or an array containing any of these.
 /// @param {Real} ylen Distance to extend the player's mask vertically.
-/// @returns {Bool}
-player_boxcast = function (ind, ylen)
+/// @param {Bool} [get_id] Whether to return the id of the collider found (optional, default is false).
+/// @returns {Bool|Id.Instance|Id.TileMapElement}
+player_boxcast = function (ind, ylen, get_id = false)
 {
 	var x_int = x div 1;
 	var y_int = y div 1;
@@ -40,22 +41,26 @@ player_boxcast = function (ind, ylen)
 	var right = max(x1, x2) + SUBPIXEL;
 	var bottom = max(y1, y2) + SUBPIXEL;
 	
-	return collision_rectangle(left, top, right, bottom, ind, true, false) != noone;
+	ind = collision_rectangle(left, top, right, bottom, ind, true, false);
+	return get_id ? ind : ind != noone;
 };
 
 /// @method player_linecast
 /// @description Checks if the given collider's mask intersects the 'arms' of the player's virtual mask.
 /// @param {Asset.GMObject|Id.Instance|Id.TileMapElement|Array} ind Object, instance, or tilemap to check, or an array containing any of these.
 /// @param {Real} [xrad] Distance to extend the player's mask horizontally both ways (optional, default is the player's wall radius).
-/// @returns {Bool}
-player_linecast = function (ind, xrad = x_wall_radius)
+/// @param {Bool} [get_id] Whether to return the id of the collider found (optional, default is false).
+/// @returns {Bool|Id.Instance|Id.TileMapElement}
+player_linecast = function (ind, xrad = x_wall_radius, get_id = false)
 {
 	var x_int = x div 1;
 	var y_int = y div 1;
 	
-	return mask_direction mod 180 == 0 ?
-		collision_line(x_int - xrad, y_int, x_int + xrad, y_int, ind, true, false) != noone :
-		collision_line(x_int, y_int - xrad, x_int, y_int + xrad, ind, true, false) != noone;
+	ind = mask_direction mod 180 == 0 ?
+		collision_line(x_int - xrad, y_int, x_int + xrad, y_int, ind, true, false) :
+		collision_line(x_int, y_int - xrad, x_int, y_int + xrad, ind, true, false);
+	
+	return get_id ? ind : ind != noone;
 };
 
 /// @method player_raycast
@@ -117,8 +122,6 @@ player_get_collisions = function ()
 		collision_rectangle_list(x_int - x_wall_radius, y_int - y_radius - 1, x_int + x_wall_radius, y_int + y_radius + 1, objZoneObject, true, false, instances, false) :
 		collision_rectangle_list(x_int - y_radius - 1, y_int - x_wall_radius, x_int + y_radius + 1, y_int + x_wall_radius, objZoneObject, true, false, instances, false);
 	
-	ground_id = noone;
-	
 	// Execute reactions
 	for (var n = 0; n < total; ++n)
 	{
@@ -130,12 +133,6 @@ player_get_collisions = function ()
 		if (ind.semisolid and collision_rectangle(x1, y1, x2, y2, ind, true, false) != noone) continue;
 		
 		array_push(hard_colliders, ind);
-		
-		// Update current ground
-		if (ground_id == noone and y_speed >= 0 and player_boxcast(ind, y_radius + on_ground))
-		{
-			ground_id = ind;
-		}
 	}
 };
 

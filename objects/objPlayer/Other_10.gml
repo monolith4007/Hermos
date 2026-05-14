@@ -29,7 +29,8 @@ player_move_on_ground = function ()
 		player_get_collisions();
 		
 		// Detect walls
-		if (player_linecast(hard_colliders) and sign(x_speed) == player_escape_wall())
+		var ind = player_linecast(hard_colliders, , true);
+		if (ind != noone and sign(x_speed) == player_escape_wall(ind))
 		{
 			x_speed = 0;
 		}
@@ -69,7 +70,8 @@ player_move_in_air = function ()
 		player_get_collisions();
 		
 		// Detect walls
-		if (player_linecast(hard_colliders) and sign(x_speed) == player_escape_wall())
+		var ind = player_linecast(hard_colliders, , true);
+		if (ind != noone and sign(x_speed) == player_escape_wall(ind))
 		{
 			x_speed = 0;
 		}
@@ -111,13 +113,8 @@ player_move_in_air = function ()
 		// Land
 		if (landed)
 		{
-			// Disable angle detection on objects / set new horizontal speed
-			if (ground_id != noone)
-			{
-				direction = gravity_direction;
-				local_direction = 0;
-			}
-			else if (local_direction >= 23 and local_direction <= 337 and abs(x_speed) <= abs(y_speed))
+			// Calculate new horizontal speed
+			if (local_direction >= 23 and local_direction <= 337 and abs(x_speed) <= abs(y_speed))
 			{
 				x_speed = local_direction < 180 ? -y_speed : y_speed;
 				if (mask_direction == gravity_direction) x_speed *= 0.5;
