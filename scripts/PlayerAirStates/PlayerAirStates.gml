@@ -10,6 +10,14 @@ function player_is_falling(phase)
 			
 			// Detach from ground
 			player_ground(false);
+			
+			// Animate
+			if (animation == "brake")
+			{
+				var velocity = abs(x_speed) div 1;
+				player_animate(velocity < 6 ? "walk" : "run");
+				timeline_speed = 1 / max(8 - velocity, 1);
+			}
 			break;
 		}
 		case PHASE.STEP:
