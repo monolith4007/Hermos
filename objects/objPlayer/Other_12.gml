@@ -3,7 +3,7 @@
 /// @method player_escape_wall
 /// @description Moves the 'arms' of the player's virtual mask out of collision with the given wall.
 /// @param {Id.Instance|Id.TileMapElement} ind Instance or tilemap to escape.
-/// @returns {Real|Undefined} Sign of the wall from the player, or undefined on failure to reposition.
+/// @returns {Real} Sign of the wall from the player, or 0 on failure to reposition.
 player_escape_wall = function (ind)
 {
 	var x_int = x div 1;
@@ -48,7 +48,7 @@ player_escape_wall = function (ind)
 		}
 	}
 	
-	return undefined;
+	return 0;
 };
 
 /// @method player_ground

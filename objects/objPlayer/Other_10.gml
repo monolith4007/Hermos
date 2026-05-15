@@ -34,7 +34,7 @@ player_move_on_ground = function ()
 		var ind = player_linecast(hard_colliders, true);
 		if (ind != noone)
 		{
-			wall_sign = player_escape_wall(ind) ?? 0;
+			wall_sign = player_escape_wall(ind);
 			if (sign(x_speed) == wall_sign) x_speed = 0;
 		}
 		
@@ -78,7 +78,7 @@ player_move_in_air = function ()
 		var ind = player_linecast(hard_colliders, true);
 		if (ind != noone)
 		{
-			wall_sign = player_escape_wall(ind) ?? 0;
+			wall_sign = player_escape_wall(ind);
 			if (sign(x_speed) == wall_sign) x_speed = 0;
 		}
 		
