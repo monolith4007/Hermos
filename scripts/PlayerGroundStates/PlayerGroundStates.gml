@@ -150,7 +150,7 @@ function player_is_running(phase)
 					particle_spawn("brake_dust", px, py);
 				}
 			}
-			else
+			else if (not (animation == "push" and image_xscale == input_sign))
 			{
 				var velocity = abs(x_speed) div 1;
 				var new_anim = velocity < 6 ? "walk" : "run";
@@ -193,6 +193,13 @@ function player_is_running(phase)
 				timeline_speed = 1;
 				image_angle = gravity_direction;
 				image_xscale = -input_sign;
+			}
+			
+			// Push
+			if (wall_sign != 0 and input_sign == wall_sign and animation != "push")
+			{
+				player_animate("push");
+				timeline_speed = 1;
 			}
 			break;
 		}

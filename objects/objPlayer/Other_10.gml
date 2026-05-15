@@ -13,6 +13,8 @@ player_move_on_ground = function ()
 		if (dy != 0) other.y += dy;
 	}
 	
+	wall_sign = 0;
+	
 	// Calculate movement steps
 	var total_steps = 1 + abs(x_speed) div 13;
 	var step = x_speed / total_steps;
@@ -30,9 +32,10 @@ player_move_on_ground = function ()
 		
 		// Detect walls
 		var ind = player_linecast(hard_colliders, true);
-		if (ind != noone and sign(x_speed) == player_escape_wall(ind))
+		if (ind != noone)
 		{
-			x_speed = 0;
+			wall_sign = player_escape_wall(ind) ?? 0;
+			if (sign(x_speed) == wall_sign) x_speed = 0;
 		}
 		
 		// Detect floor
@@ -52,6 +55,8 @@ player_move_on_ground = function ()
 /// @description Updates the player's position in the air and checks for collisions.
 player_move_in_air = function ()
 {
+	wall_sign = 0;
+	
 	// Calculate movement steps
 	var total_steps = 1 + abs(x_speed) div 13 + abs(y_speed) div 13;
 	var x_step = x_speed / total_steps;
@@ -71,9 +76,10 @@ player_move_in_air = function ()
 		
 		// Detect walls
 		var ind = player_linecast(hard_colliders, true);
-		if (ind != noone and sign(x_speed) == player_escape_wall(ind))
+		if (ind != noone)
 		{
-			x_speed = 0;
+			wall_sign = player_escape_wall(ind) ?? 0;
+			if (sign(x_speed) == wall_sign) x_speed = 0;
 		}
 		
 		// Detect floors / ceilings

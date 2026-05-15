@@ -44,6 +44,7 @@ gravity_direction = 0;
 local_direction = 0;
 mask_direction = 0;
 
+wall_sign = 0;
 cliff_sign = 0;
 
 hard_colliders = variable_clone(ctrlZone.tilemaps, 0);
@@ -83,5 +84,6 @@ animations =
 	spindash: animSonicSpindash,
 	teeter: animSonicTeeter,
 	brake: animSonicBrake,
-	hurt: animSonicHurt
+	hurt: animSonicHurt,
+	push: animSonicPush
 };
