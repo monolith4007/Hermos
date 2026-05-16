@@ -12,7 +12,7 @@ function player_is_falling(phase)
 			player_ground(false);
 			
 			// Animate
-			if (animation == "brake")
+			if (animation == "brake" or animation == "push")
 			{
 				var velocity = abs(x_speed) div 1;
 				player_animate(velocity < 6 ? "walk" : "run");
