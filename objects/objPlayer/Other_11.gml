@@ -150,13 +150,15 @@ player_calc_tile_normal = function (ox, oy)
 	{
 		var sensor_y = array_create(2, oy);
 		var sensor_x = array_create(2, ox - ox mod 16);
-		sensor_x[mask_direction == 0] += 15;
+		var right_point = mask_direction == 0;
+		sensor_x[right_point] += 15;
 	}
 	else
 	{
 		var sensor_x = array_create(2, ox);
 		var sensor_y = array_create(2, oy - oy mod 16);
-		sensor_y[mask_direction == 270] += 15;
+		var right_point = mask_direction == 270;
+		sensor_y[right_point] += 15;
 	}
 	
 	// Extend / regress angle sensors

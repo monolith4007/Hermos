@@ -79,7 +79,11 @@ player_move_in_air = function ()
 		if (ind != noone)
 		{
 			wall_sign = player_escape_wall(ind);
-			if (sign(x_speed) == wall_sign) x_speed = 0;
+			if (sign(x_speed) == wall_sign)
+			{
+				x_speed = 0;
+				x_step = 0;
+			}
 		}
 		
 		// Detect floors / ceilings

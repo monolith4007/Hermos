@@ -1,7 +1,7 @@
 /// @description Setters
 
 /// @method player_escape_wall
-/// @description Moves the 'arms' of the player's virtual mask out of collision with the given wall.
+/// @description Moves the 'arms' of the player's virtual mask out of the given wall.
 /// @param {Id.Instance|Id.TileMapElement} ind Instance or tilemap to escape.
 /// @returns {Real} Sign of the wall from the player, or 0 on failure to reposition.
 player_escape_wall = function (ind)
@@ -88,7 +88,7 @@ player_ground = function (attach)
 		}
 		else
 		{
-			// Reset ground instance
+			// Register ground instance
 			if (not instance_exists(ground_id)) ground_id = noone;
 			break;
 		}
