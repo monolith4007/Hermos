@@ -95,15 +95,7 @@ player_ground = function (attach)
 	}
 	
 	// Update angle values
-	if (ground_id == noone)
-	{
-		player_detect_angle();
-	}
-	else if (landed)
-	{
-		direction = gravity_direction;
-		local_direction = 0;
-	}
+	player_detect_angle();
 };
 
 /// @method player_detect_angle
@@ -137,7 +129,7 @@ player_detect_angle = function ()
 			ox += cosine * x_radius;
 			oy -= sine * x_radius;
 		}
-		direction = player_calc_tile_normal(ox, oy);
+		direction = player_calculate_angle(ox, oy);
 	}
 	else direction = mask_direction;
 	local_direction = angle_wrap(direction - gravity_direction);

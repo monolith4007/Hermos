@@ -118,8 +118,8 @@ player_get_collisions = function ()
 	ds_list_clear(instances);
 	
 	var total = sine == 0 ?
-		collision_rectangle_list(x_int - x_wall_radius, y_int - y_radius - 1, x_int + x_wall_radius, y_int + y_radius + 1, objZoneObject, true, false, instances, false) :
-		collision_rectangle_list(x_int - y_radius - 1, y_int - x_wall_radius, x_int + y_radius + 1, y_int + x_wall_radius, objZoneObject, true, false, instances, false);
+		collision_rectangle_list(x_int - x_wall_radius, y_int - y_radius - 2, x_int + x_wall_radius, y_int + y_radius + 2, objZoneObject, true, false, instances, false) :
+		collision_rectangle_list(x_int - y_radius - 2, y_int - x_wall_radius, x_int + y_radius + 2, y_int + x_wall_radius, objZoneObject, true, false, instances, false);
 	
 	// Execute reactions
 	for (var n = 0; n < total; ++n)
@@ -135,30 +135,46 @@ player_get_collisions = function ()
 	}
 };
 
-/// @method player_calc_tile_normal
-/// @description Calculates the surface normal of the tiles found within the 16x16 area relative to the given point.
+/// @method player_calculate_angle
+/// @description Calculates the angle of the terrain found within a 16x16 area at the given point relative to the player's mask direction.
 /// @param {Real} x x-coordinate of the point.
 /// @param {Real} y y-coordinate of the point.
 /// @returns {Real}
-player_calc_tile_normal = function (ox, oy)
+player_calculate_angle = function (ox, oy)
 {
 	var sine = dsin(mask_direction);
 	var cosine = dcos(mask_direction);
+	var ind = hard_colliders;
 	
 	// Set up angle sensors, one at each end of a tile
 	if (sine == 0)
 	{
 		var sensor_y = array_create(2, oy);
 		var sensor_x = array_create(2, ox - ox mod 16);
-		var right_point = mask_direction == 0;
-		sensor_x[right_point] += 15;
+		var right_sensor = mask_direction == 0; // 'Right' is relative
+		sensor_x[right_sensor] += 15;
+		
+		// Clamp sensors to ground instance bounds, if applicable
+		if (ground_id != noone)
+		{
+			ind = ground_id;
+			sensor_x[not right_sensor] = max(sensor_x[not right_sensor], ind.bbox_left);
+			sensor_x[right_sensor] = min(sensor_x[right_sensor], ind.bbox_right);
+		}
 	}
 	else
 	{
 		var sensor_x = array_create(2, ox);
 		var sensor_y = array_create(2, oy - oy mod 16);
-		var right_point = mask_direction == 270;
-		sensor_y[right_point] += 15;
+		var right_sensor = mask_direction == 270;
+		sensor_y[right_sensor] += 15;
+		
+		if (ground_id != noone)
+		{
+			ind = ground_id;
+			sensor_y[not right_sensor] = max(sensor_y[not right_sensor], ind.bbox_top);
+			sensor_y[right_sensor] = min(sensor_y[right_sensor], ind.bbox_bottom);
+		}
 	}
 	
 	// Extend / regress angle sensors
@@ -166,12 +182,12 @@ player_calc_tile_normal = function (ox, oy)
 	{
 		repeat (16)
 		{
-			if (collision_point(sensor_x[n], sensor_y[n], hard_colliders, true, false) == noone)
+			if (collision_point(sensor_x[n], sensor_y[n], ind, true, false) == noone)
 			{
 				sensor_x[n] += sine;
 				sensor_y[n] += cosine;
 			}
-			else if (collision_point(sensor_x[n] - sine, sensor_y[n] - cosine, hard_colliders, true, false) != noone)
+			else if (collision_point(sensor_x[n] - sine, sensor_y[n] - cosine, ind, true, false) != noone)
 			{
 				sensor_x[n] -= sine;
 				sensor_y[n] -= cosine;
