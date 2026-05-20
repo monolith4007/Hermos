@@ -151,7 +151,7 @@ player_calculate_angle = function (ox, oy)
 	{
 		var sensor_y = array_create(2, oy);
 		var sensor_x = array_create(2, ox - ox mod 16);
-		var right_sensor = mask_direction == 0; // 'Right' is relative
+		var right_sensor = mask_direction == 0; // 'Right' is absolute, not relative
 		sensor_x[right_sensor] += 15;
 		
 		// Clamp sensors to ground instance bounds, if applicable
@@ -166,14 +166,14 @@ player_calculate_angle = function (ox, oy)
 	{
 		var sensor_x = array_create(2, ox);
 		var sensor_y = array_create(2, oy - oy mod 16);
-		var right_sensor = mask_direction == 270;
-		sensor_y[right_sensor] += 15;
+		var bottom_sensor = mask_direction == 270;
+		sensor_y[bottom_sensor] += 15;
 		
 		if (ground_id != noone)
 		{
 			ind = ground_id;
-			sensor_y[not right_sensor] = max(sensor_y[not right_sensor], ind.bbox_top);
-			sensor_y[right_sensor] = min(sensor_y[right_sensor], ind.bbox_bottom);
+			sensor_y[not bottom_sensor] = max(sensor_y[not bottom_sensor], ind.bbox_top);
+			sensor_y[bottom_sensor] = min(sensor_y[bottom_sensor], ind.bbox_bottom);
 		}
 	}
 	
