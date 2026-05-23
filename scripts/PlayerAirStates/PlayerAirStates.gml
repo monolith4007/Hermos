@@ -178,3 +178,41 @@ function player_is_hurt(phase)
 		}
 	}
 }
+
+function player_is_dead(phase)
+{
+	switch (phase)
+	{
+		case PHASE.ENTER:
+		{
+			y_speed = -7;
+			ctrlZone.time_enabled = false;
+			instance_destroy(objCamera);
+			audio_play_sfx(sfxDeath);
+			
+			// Animate
+			player_animate("dead");
+			image_angle = gravity_direction;
+			break;
+		}
+		case PHASE.STEP:
+		{
+			// Move
+			x += dsin(image_angle) * y_speed;
+			y += dcos(image_angle) * y_speed;
+			y_speed += gravity_force;
+			
+			// Restart
+			if (y_speed >= 4 and not instance_in_view())
+			{
+				call_later(1, time_source_units_seconds, --lives > 0 ? room_restart : game_end);
+				instance_destroy();
+			}
+			break;
+		}
+		case PHASE.EXIT:
+		{
+			break;
+		}
+	}
+}

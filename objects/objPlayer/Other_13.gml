@@ -34,11 +34,15 @@ player_damage = function (ind)
 	// Abort if invulnerable
 	if (recovery_time > 0 or state == player_is_hurt) exit;
 	
-	// Recoil
-	player_perform(player_is_hurt);
-	rolling = false;
+	// Recoil / Die
+	if (global.rings > 0)
+	{
+		player_perform(player_is_hurt);
+		if (not on_ground) rolling = false;
 	
-	x_speed = 2 * sign(x - ind.x);
-	if (x_speed == 0) x_speed = 2;
-	y_speed = -4;
+		x_speed = 2 * sign(x - ind.x);
+		if (x_speed == 0) x_speed = 2;
+		y_speed = -4;
+	}
+	else player_perform(player_is_dead);
 };

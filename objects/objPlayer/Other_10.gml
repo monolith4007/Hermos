@@ -69,7 +69,9 @@ player_move_in_air = function ()
 	{
 		x += cosine * x_step + sine * y_step;
 		y += -sine * x_step + cosine * y_step;
-		player_keep_in_bounds();
+		
+		// Die if out of bounds
+		if (not player_keep_in_bounds()) return player_perform(player_is_dead);
 		
 		// Detect colliders
 		player_get_collisions();

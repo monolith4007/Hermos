@@ -85,5 +85,6 @@ animations =
 	teeter: animSonicTeeter,
 	brake: animSonicBrake,
 	hurt: animSonicHurt,
-	push: animSonicPush
+	push: animSonicPush,
+	dead: animSonicDead
 };
