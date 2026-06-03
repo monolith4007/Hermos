@@ -386,7 +386,11 @@ function player_is_rolling(phase)
 		}
 		case PHASE.EXIT:
 		{
-			if (on_ground) rolling = false;
+			if (on_ground)
+			{
+				rolling = false;
+				badnik_chain = 0;
+			}
 			break;
 		}
 	}

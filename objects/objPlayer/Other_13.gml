@@ -51,7 +51,11 @@ player_damage = function (ind)
 	if (global.rings > 0)
 	{
 		player_perform(player_is_hurt);
-		rolling = false;
+		if (rolling)
+		{
+			rolling = false;
+			badnik_chain = 0;
+		}
 	
 		x_speed = 2 * sign(x - ind.x);
 		if (x_speed == 0) x_speed = 2;
