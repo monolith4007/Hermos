@@ -51,6 +51,10 @@ with (sprite_particles)
 	part_type_life(ring_sparkle, 24, 24);
 	part_type_sprite(ring_sparkle, sprRingSparkle, true, true, false);
 	
+	explosion = part_type_create();
+	part_type_life(explosion, 30, 30);
+	part_type_sprite(explosion, sprExplosion, true, true, false);
+	
 	points = part_type_create();
 	part_type_life(points, 32, 32);
 	part_type_sprite(points, sprPoints, false, false, false);

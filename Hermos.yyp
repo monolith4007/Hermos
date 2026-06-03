@@ -45,6 +45,7 @@
     {"id":{"name":"ctrlMusic","path":"objects/ctrlMusic/ctrlMusic.yy",},},
     {"id":{"name":"ctrlWindow","path":"objects/ctrlWindow/ctrlWindow.yy",},},
     {"id":{"name":"ctrlZone","path":"objects/ctrlZone/ctrlZone.yy",},},
+    {"id":{"name":"objBadnik","path":"objects/objBadnik/objBadnik.yy",},},
     {"id":{"name":"objCamera","path":"objects/objCamera/objCamera.yy",},},
     {"id":{"name":"objHUD","path":"objects/objHUD/objHUD.yy",},},
     {"id":{"name":"objPlayer","path":"objects/objPlayer/objPlayer.yy",},},

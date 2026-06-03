@@ -45,21 +45,22 @@ player_gain_lives = function (num)
 player_damage = function (ind)
 {
 	// Abort if invulnerable
-	if (recovery_time > 0 or state == player_is_hurt) exit;
+	if (recovery_time > 0 or state == player_is_hurt or invincibility_time > 0) exit;
 	
 	// Recoil / Die
 	if (global.rings > 0)
 	{
 		player_perform(player_is_hurt);
+		
+		x_speed = 2 * sign(x - ind.x);
+		if (x_speed == 0) x_speed = 2;
+		y_speed = -4;
+		
 		if (rolling)
 		{
 			rolling = false;
 			badnik_chain = 0;
 		}
-	
-		x_speed = 2 * sign(x - ind.x);
-		if (x_speed == 0) x_speed = 2;
-		y_speed = -4;
 	}
 	else player_perform(player_is_dead);
 };
