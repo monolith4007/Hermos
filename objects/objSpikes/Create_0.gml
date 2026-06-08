@@ -21,7 +21,7 @@ reaction = function (ind)
 			damage = true;
 		}
 	}
-	else if (player_boxcast(ind, -y_radius) and rotation_offset == 180 and y_speed < 0)
+	else if (rotation_offset == 180 and y_speed < 0 and player_boxcast(ind, -y_radius))
 	{
 		damage = true;
 	}

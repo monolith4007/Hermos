@@ -56,9 +56,8 @@ function player_is_falling(phase)
 			// Animate
 			if (animation == "rise" and y_speed >= 0)
 			{
-				var velocity = abs(x_speed) div 1;
-				player_animate(velocity < 6 ? "walk" : "run");
-				timeline_speed = 1 / max(8 - velocity, 1);
+				player_animate("walk");
+				timeline_speed = 0.125;
 			}
 			if (image_angle != mask_direction)
 			{
