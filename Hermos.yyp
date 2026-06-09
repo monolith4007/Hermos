@@ -58,6 +58,7 @@
     {"id":{"name":"objSolid","path":"objects/objSolid/objSolid.yy",},},
     {"id":{"name":"objSpikes","path":"objects/objSpikes/objSpikes.yy",},},
     {"id":{"name":"objSpring","path":"objects/objSpring/objSpring.yy",},},
+    {"id":{"name":"objSpringDiagonal","path":"objects/objSpringDiagonal/objSpringDiagonal.yy",},},
     {"id":{"name":"objZoneObject","path":"objects/objZoneObject/objZoneObject.yy",},},
     {"id":{"name":"rmStartup","path":"rooms/rmStartup/rmStartup.yy",},},
     {"id":{"name":"rmTest","path":"rooms/rmTest/rmTest.yy",},},
