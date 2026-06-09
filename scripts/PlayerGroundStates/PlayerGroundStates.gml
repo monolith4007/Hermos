@@ -153,7 +153,7 @@ function player_is_running(phase)
 			else if (not (animation == "push" and image_xscale == input_sign))
 			{
 				var velocity = abs(x_speed) div 1;
-				var new_anim = velocity < 6 ? "walk" : "run";
+				var new_anim = velocity < 6 ? "walk" : (velocity < 10 ? "run" : "sprint");
 				if (animation != new_anim) player_animate(new_anim);
 				timeline_speed = 1 / max(8 - velocity, 1);
 				

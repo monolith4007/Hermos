@@ -82,6 +82,7 @@ animations =
 	idle: animSonicIdle,
 	walk: animSonicWalk,
 	run: animSonicRun,
+	sprint: animSonicSprint,
 	roll: animSonicRoll,
 	look: animSonicLook,
 	crouch: animSonicCrouch,
