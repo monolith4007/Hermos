@@ -488,14 +488,12 @@ function player_is_peelouting(phase)
 			if (not input_check(INPUT.UP))
 			{
 				audio_stop_sound(sfxPeeloutRev);
-				if (peelout_time >= 15)
-				{
-					x_speed = image_xscale * (peelout_time == 30 ? 12 : 6);
-					objCamera.alarm[0] = 16;
-					audio_play_sfx(sfxPeelout);
-					return player_perform(player_is_running);
-				}
-				return player_perform(player_is_standing);
+				if (peelout_time < 15) return player_perform(player_is_standing);
+				
+				x_speed = image_xscale * (peelout_time == 30 ? 12 : 6);
+				objCamera.alarm[0] = 12;
+				audio_play_sfx(sfxPeelout);
+				return player_perform(player_is_running);
 			}
 			
 			// Charge and animate
