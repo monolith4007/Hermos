@@ -9,8 +9,8 @@
   "name":"objSpring",
   "overriddenProperties":[],
   "parent":{
-    "name":"Spring",
-    "path":"folders/Zone/Objects/Spring.yy",
+    "name":"Springs",
+    "path":"folders/Zone/Objects/Springs.yy",
   },
   "parentObjectId":{
     "name":"objSolid",

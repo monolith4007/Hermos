@@ -27,8 +27,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Spring",
-    "path":"folders/Zone/Objects/Spring.yy",
+    "name":"Sprites",
+    "path":"folders/Zone/Objects/Springs/Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
