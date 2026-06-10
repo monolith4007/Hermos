@@ -113,6 +113,7 @@
     {"id":{"name":"sprPoints","path":"sprites/sprPoints/sprPoints.yy",},},
     {"id":{"name":"sprRing","path":"sprites/sprRing/sprRing.yy",},},
     {"id":{"name":"sprRingSparkle","path":"sprites/sprRingSparkle/sprRingSparkle.yy",},},
+    {"id":{"name":"sprShield","path":"sprites/sprShield/sprShield.yy",},},
     {"id":{"name":"sprSonicBrake","path":"sprites/sprSonicBrake/sprSonicBrake.yy",},},
     {"id":{"name":"sprSonicCrouch","path":"sprites/sprSonicCrouch/sprSonicCrouch.yy",},},
     {"id":{"name":"sprSonicDead","path":"sprites/sprSonicDead/sprSonicDead.yy",},},
