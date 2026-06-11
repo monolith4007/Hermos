@@ -211,6 +211,7 @@ function player_is_dead(phase)
 			if (y_speed >= 4 and not instance_in_view())
 			{
 				call_later(1, time_source_units_seconds, --lives > 0 ? room_restart : game_end);
+				instance_destroy(shield);
 				instance_destroy();
 			}
 			break;

@@ -108,8 +108,6 @@ player_get_collisions = function ()
 	
 	// Detect instances intersecting the player's virtual mask
 	static instances = ds_list_create();
-	ds_list_clear(instances);
-	
 	var total = mask_sin == 0 ?
 		collision_rectangle_list(x_int - x_wall_radius, y_int - y_radius - 2, x_int + x_wall_radius, y_int + y_radius + 2, objZoneObject, true, false, instances, false) :
 		collision_rectangle_list(x_int - y_radius - 2, y_int - x_wall_radius, x_int + y_radius + 2, y_int + x_wall_radius, objZoneObject, true, false, instances, false);
@@ -119,6 +117,7 @@ player_get_collisions = function ()
 	{
 		var ind = instances[| --total];
 		script_execute(ind.reaction, ind);
+		if (total == 0) ds_list_clear(instances);
 		
 		// Register solid instances (exclude semisolids)
 		if (not (instance_exists(ind) and object_is_ancestor(ind.object_index, objSolid))) continue;
