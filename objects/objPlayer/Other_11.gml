@@ -106,11 +106,10 @@ player_get_collisions = function ()
 		}
 	}
 	
-	// Detect instances intersecting the player's virtual mask
+	// Detect instances intersecting a minimum bounding rectangle centered on the player
+	// The area of the rectangle must be coordinated with the distances used for collision checking elsewhere
 	static instances = ds_list_create();
-	var total = mask_sin == 0 ?
-		collision_rectangle_list(x_int - x_wall_radius, y_int - y_radius - 2, x_int + x_wall_radius, y_int + y_radius + 2, objZoneObject, true, false, instances, false) :
-		collision_rectangle_list(x_int - y_radius - 2, y_int - x_wall_radius, x_int + y_radius + 2, y_int + x_wall_radius, objZoneObject, true, false, instances, false);
+	var total = collision_rectangle_list(x1, y1, x2 + mask_sin * (y_radius + 2), y2 + mask_cos * (y_radius + 2), objZoneObject, true, false, instances, false);
 	
 	// Execute reactions
 	repeat (total)
