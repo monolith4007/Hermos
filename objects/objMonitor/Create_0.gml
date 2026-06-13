@@ -2,16 +2,11 @@
 image_speed = 0;
 reaction = function (ind)
 {
-	// Get crushed
-	/*if (collision_point(x, y, ind, false, false) != noone)
-	{
-		return player_perform(player_is_dead);
-	}*/
+	if (not rolling) exit;
 	
-	// Knock down monitor / Rebound
 	if (y_speed < 0)
 	{
-		if (player_boxcast(ind, -y_radius)) then with (ind)
+		if (player_boxcast(ind, -y_radius) and not player_linecast(ind)) then with (ind)
 		{
 			tilemap = ctrlZone.tilemaps[0];
 			vspeed = -2;
@@ -19,9 +14,9 @@ reaction = function (ind)
 			alarm[0] = 1;
 		}
 	}
-	else if (rolling and player_intersect(ind, x_wall_radius))
+	else if (player_intersect(ind, x_wall_radius))
 	{
-		if (not on_ground) y_speed *= -1;
+		y_speed *= -1;
 		audio_play_sfx(sfxDestroy);
 		
 		with (ind)
