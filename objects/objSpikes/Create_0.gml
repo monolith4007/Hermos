@@ -4,27 +4,23 @@ reaction = function (ind)
 {
 	// Get orientation relative to mask direction
 	var rotation_offset = angle_wrap(ind.image_angle - mask_direction);
-	var damage = false;
 	
-	// Take damage
 	if (player_linecast(ind))
 	{
 		if ((rotation_offset == 90 and x_speed > 0) or (rotation_offset == 270 and x_speed < 0))
 		{
-			damage = true;
+			player_damage(ind);
 		}
 	}
-	else if (player_boxcast(ind, y_radius + on_ground))
+	else if (y_speed >= 0)
 	{
-		if (rotation_offset == 0 and y_speed >= 0)
+		if (rotation_offset == 0 and player_boxcast(ind, y_radius + on_ground))
 		{
-			damage = true;
+			player_damage(ind);
 		}
 	}
-	else if (rotation_offset == 180 and y_speed < 0 and player_boxcast(ind, -y_radius))
+	else if (rotation_offset == 180 and player_boxcast(ind, -y_radius))
 	{
-		damage = true;
+		player_damage(ind);
 	}
-	
-	if (damage) player_damage(ind);
 };

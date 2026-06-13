@@ -17,14 +17,14 @@ reaction = function (ind)
 			type = 1;
 		}
 	}
-	else if (player_boxcast(ind, y_radius))
+	else if (y_speed >= 0)
 	{
-		if (rotation_offset == 0 and y_speed >= 0)
+		if (rotation_offset == 0 and player_boxcast(ind, y_radius + on_ground))
 		{
 			type = 2;
 		}
 	}
-	else if (rotation_offset == 180 and y_speed < 0 and player_boxcast(ind, -y_radius))
+	else if (rotation_offset == 180 and player_boxcast(ind, -y_radius))
 	{
 		type = 3;
 	}
