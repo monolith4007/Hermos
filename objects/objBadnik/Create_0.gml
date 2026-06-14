@@ -6,7 +6,7 @@ reaction = function (ind)
 	if (not player_intersect(ind)) exit;
 	
 	// Take damage if not in an attacking state
-	if (not (rolling or invincibility_time > 0))
+	if (not rolling and invincibility_effect == noone)
 	{
 		return player_damage(ind);
 	}

@@ -13,11 +13,3 @@ if (superspeed_time > 0 and --superspeed_time == 0)
 {
 	player_refresh_physics();
 }
-
-if (invincibility_time > 0 and --invincibility_time == 0)
-{
-	audio_dequeue_bgm(bgmInvincibility);
-	instance_destroy(invincibility_effect);
-	invincibility_effect = noone;
-	with (shield) visible = true;
-}

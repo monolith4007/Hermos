@@ -45,7 +45,7 @@ player_gain_lives = function (num)
 player_damage = function (ind)
 {
 	// Abort if invulnerable
-	if (recovery_time > 0 or state == player_is_hurt or invincibility_time > 0) exit;
+	if (recovery_time > 0 or state == player_is_hurt or invincibility_effect != noone) exit;
 	
 	if (shield != noone)
 	{
