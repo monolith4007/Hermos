@@ -1,5 +1,5 @@
 /// @description Initialize
-image_speed = 0;
+event_inherited();
 reaction = function (ind)
 {
 	// Get orientation relative to mask direction

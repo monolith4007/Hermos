@@ -1,6 +1,6 @@
 /// @description Initialize
+event_inherited();
 if (force > 10) sprite_index = sprSpringRed;
-image_speed = 0;
 image_index = 1;
 
 reaction = function (ind)

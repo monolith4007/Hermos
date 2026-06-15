@@ -1,5 +1,5 @@
 /// @description Initialize
-image_speed = 0;
+event_inherited();
 reaction = function (ind)
 {
 	if (not rolling) exit;
