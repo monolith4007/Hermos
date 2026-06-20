@@ -59,9 +59,9 @@ function player_is_falling(phase)
 				player_animate("walk");
 				timeline_speed = 0.125;
 			}
-			if (image_angle != mask_direction)
+			if (image_angle != direction)
 			{
-				var diff = angle_difference(mask_direction, image_angle);
+				var diff = angle_difference(direction, image_angle);
 				image_angle += min(2.8125, abs(diff)) * sign(diff);
 			}
 			break;

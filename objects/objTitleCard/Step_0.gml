@@ -63,11 +63,7 @@ switch (state)
 		{
 			// Start stage
 			ctrlZone.time_enabled = true;
-			with (objPlayer)
-			{
-				timeline_running = true;
-				player_perform(player_is_standing);
-			}
+			instance_activate_layer("ZoneObjects");
 			
 			// Display labels temporarily (also a blank state)
 			state = 6;

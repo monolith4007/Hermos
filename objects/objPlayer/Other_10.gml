@@ -4,7 +4,7 @@
 /// @description Updates the player's position on the ground and checks for collisions.
 player_move_on_ground = function ()
 {
-	// Ride moving platforms
+	// Ride moving platform
 	with (ground_id)
 	{
 		var dx = x - xprevious;
@@ -15,14 +15,15 @@ player_move_on_ground = function ()
 	
 	wall_sign = 0;
 	
-	// Calculate movement steps
+	// Divide the player's speed into smaller steps; ensures they don't miss intersections when moving fast
 	var total_steps = 1 + abs(x_speed) div 15;
 	var step = x_speed / total_steps;
-	
 	var floor_reach = y_radius + min(2 + abs(x_speed) div 1, y_snap_distance);
 	
+	// Iterate over the number of steps
 	repeat (total_steps)
 	{
+		// Move by a single step
 		x += dcos(direction) * step;
 		y -= dsin(direction) * step;
 		player_keep_in_bounds();
@@ -57,13 +58,15 @@ player_move_in_air = function ()
 {
 	wall_sign = 0;
 	
-	// Calculate movement steps
+	// Divide the player's speeds into smaller steps
 	var total_steps = 1 + abs(x_speed) div 15 + abs(y_speed) div 15;
 	var x_step = x_speed / total_steps;
 	var y_step = y_speed / total_steps;
 	
+	// Iterate over the number of steps
 	repeat (total_steps)
 	{
+		// Move by a single step
 		x += mask_cos * x_step + mask_sin * y_step;
 		y += -mask_sin * x_step + mask_cos * y_step;
 		
@@ -85,7 +88,7 @@ player_move_in_air = function ()
 			}
 		}
 		
-		// Detect floors / ceilings
+		// Detect floor / ceiling
 		if (y_speed >= 0)
 		{
 			if (player_boxcast(hard_colliders, y_radius))

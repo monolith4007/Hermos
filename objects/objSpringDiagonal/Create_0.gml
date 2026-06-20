@@ -5,22 +5,26 @@ image_index = 1;
 
 reaction = function (ind)
 {
-	// Abort if not intersecting
-	if (not player_intersect(ind)) exit;
+	// Abort if already activated or not intersecting
+	if (ind.alarm[0] != -1 or not player_intersect(ind)) exit;
 	
 	// Bounce
 	var rotation_offset = 45 + ind.image_angle - mask_direction;
 	x_speed = -dsin(rotation_offset) * ind.force;
 	image_xscale = sign(x_speed);
 	
-	// Since the falling state sets the player's y-speed, check if they would rise before moving
+	// Falling state sets the player's y-speed; switch to it before rising
 	var y_spring_speed = -dcos(rotation_offset) * ind.force;
 	if (y_spring_speed < 0)
 	{
 		player_perform(player_is_falling);
 		player_animate("rise");
-		rolling = false;
-		badnik_chain = 0;
+		
+		if (rolling)
+		{
+			rolling = false;
+			badnik_chain = 0;
+		}
 	}
 	y_speed = y_spring_speed;
 	

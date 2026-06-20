@@ -8,6 +8,8 @@ function player_is_ready(phase)
 		}
 		case PHASE.STEP:
 		{
+			timeline_running = true;
+			player_perform(player_is_standing);
 			break;
 		}
 		case PHASE.EXIT:

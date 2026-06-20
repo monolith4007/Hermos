@@ -1,4 +1,5 @@
 /// @description Initialize
+instance_deactivate_layer("ZoneObjects");
 state = 0;
 
 // Setpieces

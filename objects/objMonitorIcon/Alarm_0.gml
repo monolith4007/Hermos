@@ -9,7 +9,7 @@ vspeed = 0;
 gravity = 0;
 alarm[0] = 32;
 
-with (owner) do switch (other.image_index)
+with (owner) switch (other.image_index)
 {
 	case ICON.RING:
 	{
@@ -40,7 +40,10 @@ with (owner) do switch (other.image_index)
 	}
 	case ICON.SHIELD:
 	{
-		shield = instance_create_depth(x, y, depth - 1, objShield, { visible: invincibility_effect == noone, owner: id });
+		if (shield == noone)
+		{
+			shield = instance_create_depth(x, y, depth - 1, objShield, { visible: invincibility_effect == noone, owner: id });
+		}
 		audio_play_sfx(sfxShield);
 		break;
 	}

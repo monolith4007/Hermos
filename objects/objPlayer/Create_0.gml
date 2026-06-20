@@ -51,22 +51,8 @@ cliff_sign = 0;
 
 hard_colliders = variable_clone(ctrlZone.tilemaps, 0);
 tilemap_count = array_length(hard_colliders);
-
-// Validate semisolid tilemap
-if (tilemap_count & 1 == 0)
-{
-	semisolid_tilemap = array_pop(hard_colliders);
-	--tilemap_count;
-}
-else semisolid_tilemap = -1;
-
-// Delist "CollisionPath1" layer tilemap
-if (tilemap_count == 3)
-{
-	array_pop(hard_colliders);
-	--tilemap_count;
-	collision_path = 0;
-}
+semisolid_tilemap = tilemap_count & 1 == 0 ? hard_colliders[--tilemap_count] : -1; // Validate semisolid tilemap
+if (tilemap_count == 3) { --tilemap_count; collision_path = 0; } // Discard the "CollisionPath1" layer tilemap
 
 // Methods
 var n = 0;
