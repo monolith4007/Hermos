@@ -160,7 +160,7 @@ function player_is_jumping(phase)
 					audio_play_sfx(sfxSpinDash);
 					particle_spawn("burst", x, y);
 					if (target_found) return player_perform(player_is_homing);
-				
+					
 					jump_action = 0;
 					x_speed = 8 * image_xscale;
 					y_speed = 0;
