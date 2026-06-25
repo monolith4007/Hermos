@@ -1,4 +1,4 @@
-/// @description Move
+/// @description Attach
 x = owner.x div 1;
 y = owner.y div 1;
 

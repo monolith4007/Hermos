@@ -24,6 +24,7 @@ enum ICON
 // Misc.
 display_set_sleep_margin(1);
 surface_depth_disable(true);
+gpu_set_zwriteenable(false);
 gc_target_frame_time(-100);
 show_debug_overlay(true);
 randomize();

@@ -48,7 +48,7 @@ function player_is_falling(phase)
 			if (not rolling and input_check_pressed(INPUT.ACTION))
 			{
 				rolling = true;
-				jump_action = 1;
+				jump_action = y_speed >= 0 ? 3 : 1;
 				
 				player_animate("roll");
 				timeline_speed = 1 / max(5 - abs(x_speed) div 1, 1);
@@ -161,7 +161,7 @@ function player_is_jumping(phase)
 					particle_spawn("burst", x, y);
 					if (target_found) return player_perform(player_is_homing);
 					
-					jump_action = 0;
+					jump_action = 2;
 					x_speed = 8 * image_xscale;
 					y_speed = 0;
 				}
