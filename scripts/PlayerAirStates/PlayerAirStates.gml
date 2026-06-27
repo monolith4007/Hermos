@@ -286,7 +286,10 @@ function player_is_dead(phase)
 			// Restart
 			if (y_speed >= 4 and not instance_in_view())
 			{
-				call_later(1, time_source_units_seconds, --lives > 0 ? room_restart : game_end);
+				call_later(1, time_source_units_seconds, function ()
+				{
+					instance_create_layer(0, 0, "Master", objFade, { target_room: room });
+				});
 				instance_destroy(invincibility_effect);
 				instance_destroy(shield);
 				instance_destroy();
