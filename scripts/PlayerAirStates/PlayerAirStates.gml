@@ -287,7 +287,11 @@ function player_is_dead(phase)
 			// Restart
 			if (y_speed >= 4 and not instance_in_view())
 			{
-				call_later(1, time_source_units_seconds, function ()
+				if (--lives == 0 or ctrlZone.time_over)
+				{
+					instance_create_layer(0, 0, "Master", objGameOver);
+				}
+				else call_later(1, time_source_units_seconds, function ()
 				{
 					instance_create_layer(0, 0, "Master", objFade, { target_room: room });
 				});

@@ -74,6 +74,7 @@
     {"id":{"name":"objCamera","path":"objects/objCamera/objCamera.yy",},},
     {"id":{"name":"objDashPanel","path":"objects/objDashPanel/objDashPanel.yy",},},
     {"id":{"name":"objFade","path":"objects/objFade/objFade.yy",},},
+    {"id":{"name":"objGameOver","path":"objects/objGameOver/objGameOver.yy",},},
     {"id":{"name":"objHUD","path":"objects/objHUD/objHUD.yy",},},
     {"id":{"name":"objInvincibility","path":"objects/objInvincibility/objInvincibility.yy",},},
     {"id":{"name":"objMonitor","path":"objects/objMonitor/objMonitor.yy",},},
