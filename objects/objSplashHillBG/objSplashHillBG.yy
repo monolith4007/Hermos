@@ -10,8 +10,8 @@
   "name":"objSplashHillBG",
   "overriddenProperties":[],
   "parent":{
-    "name":"Tilesets",
-    "path":"folders/Zone/Tilesets.yy",
+    "name":"Background",
+    "path":"folders/Zone/UI/Background.yy",
   },
   "parentObjectId":null,
   "persistent":false,

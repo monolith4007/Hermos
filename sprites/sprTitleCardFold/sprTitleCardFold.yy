@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Title Card",
-    "path":"folders/Zone/UI/Sprites/Title Card.yy",
+    "name":"Sprites",
+    "path":"folders/Zone/UI/Title Card/Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

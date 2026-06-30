@@ -8,8 +8,8 @@
   "name":"objBadnik",
   "overriddenProperties":[],
   "parent":{
-    "name":"Parents",
-    "path":"folders/Zone/Objects/Parents.yy",
+    "name":"Destructibles",
+    "path":"folders/Zone/Objects/Destructibles.yy",
   },
   "parentObjectId":{
     "name":"objZoneObject",

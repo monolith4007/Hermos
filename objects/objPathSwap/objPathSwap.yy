@@ -8,8 +8,8 @@
   "name":"objPathSwap",
   "overriddenProperties":[],
   "parent":{
-    "name":"Triggers",
-    "path":"folders/Zone/Objects/Triggers.yy",
+    "name":"Path Swapper",
+    "path":"folders/Zone/Objects/Path Swapper.yy",
   },
   "parentObjectId":{
     "name":"objZoneObject",

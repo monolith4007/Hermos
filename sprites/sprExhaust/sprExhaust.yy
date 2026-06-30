@@ -28,7 +28,7 @@
   "origin":4,
   "parent":{
     "name":"Sprites",
-    "path":"folders/Zone/Objects/Motobug/Sprites.yy",
+    "path":"folders/Zone/Objects/Destructibles/Motobug/Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

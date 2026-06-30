@@ -8,8 +8,8 @@
   "name":"objShield",
   "overriddenProperties":[],
   "parent":{
-    "name":"Player",
-    "path":"folders/Zone/Player.yy",
+    "name":"Basic Shield",
+    "path":"folders/Zone/Player/Effects/Basic Shield.yy",
   },
   "parentObjectId":null,
   "persistent":false,

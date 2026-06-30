@@ -11,8 +11,8 @@
   "name":"objInvincibility",
   "overriddenProperties":[],
   "parent":{
-    "name":"Player",
-    "path":"folders/Zone/Player.yy",
+    "name":"Invincibility",
+    "path":"folders/Zone/Player/Effects/Invincibility.yy",
   },
   "parentObjectId":null,
   "persistent":false,

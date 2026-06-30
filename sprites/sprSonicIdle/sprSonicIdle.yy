@@ -33,8 +33,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"Sonic",
-    "path":"folders/Zone/Player/Sprites/Sonic.yy",
+    "name":"Sprites",
+    "path":"folders/Zone/Player/Animations (Sonic)/Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -11,8 +11,8 @@
   "name":"objTitleCard",
   "overriddenProperties":[],
   "parent":{
-    "name":"UI",
-    "path":"folders/Zone/UI.yy",
+    "name":"Title Card",
+    "path":"folders/Zone/UI/Title Card.yy",
   },
   "parentObjectId":null,
   "persistent":false,

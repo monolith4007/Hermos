@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Tilesets",
-    "path":"folders/Zone/Tilesets.yy",
+    "name":"Background",
+    "path":"folders/Zone/UI/Background.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

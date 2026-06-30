@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"bgmInvincibility",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Zone/Player/Sounds.yy",
+    "name":"Invincibility",
+    "path":"folders/Zone/Player/Effects/Invincibility.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

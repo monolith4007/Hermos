@@ -32,8 +32,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Effects",
-    "path":"folders/Zone/Player/Sprites/Effects.yy",
+    "name":"Invincibility",
+    "path":"folders/Zone/Player/Effects/Invincibility.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

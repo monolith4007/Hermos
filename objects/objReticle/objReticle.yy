@@ -10,8 +10,8 @@
   "name":"objReticle",
   "overriddenProperties":[],
   "parent":{
-    "name":"Player",
-    "path":"folders/Zone/Player.yy",
+    "name":"Reticle",
+    "path":"folders/Zone/Player/Effects/Reticle.yy",
   },
   "parentObjectId":null,
   "persistent":false,

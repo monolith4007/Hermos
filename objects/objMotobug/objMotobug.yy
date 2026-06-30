@@ -11,7 +11,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Motobug",
-    "path":"folders/Zone/Objects/Motobug.yy",
+    "path":"folders/Zone/Objects/Destructibles/Motobug.yy",
   },
   "parentObjectId":{
     "name":"objBadnik",

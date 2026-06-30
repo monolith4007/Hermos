@@ -11,8 +11,8 @@
   ],
   "name":"animSonicIdle",
   "parent":{
-    "name":"Sonic",
-    "path":"folders/Zone/Player/Animations/Sonic.yy",
+    "name":"Timelines",
+    "path":"folders/Zone/Player/Animations (Sonic)/Timelines.yy",
   },
   "resourceType":"GMTimeline",
   "resourceVersion":"2.0",

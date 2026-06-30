@@ -34,8 +34,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Effects",
-    "path":"folders/Zone/Player/Sprites/Effects.yy",
+    "name":"Basic Shield",
+    "path":"folders/Zone/Player/Effects/Basic Shield.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

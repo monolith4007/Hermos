@@ -11,7 +11,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Monitor",
-    "path":"folders/Zone/Objects/Monitor.yy",
+    "path":"folders/Zone/Objects/Destructibles/Monitor.yy",
   },
   "parentObjectId":{
     "name":"objSolid",

@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":1,
   "parent":{
-    "name":"Triggers",
-    "path":"folders/Zone/Objects/Triggers.yy",
+    "name":"Path Swapper",
+    "path":"folders/Zone/Objects/Path Swapper.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

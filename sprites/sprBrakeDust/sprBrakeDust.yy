@@ -28,8 +28,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Effects",
-    "path":"folders/Zone/Player/Sprites/Effects.yy",
+    "name":"Particles",
+    "path":"folders/Zone/Player/Effects/Particles.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

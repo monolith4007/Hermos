@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"sfxDestroy",
   "parent":{
-    "name":"Objects",
-    "path":"folders/Zone/Objects.yy",
+    "name":"Shared Assets",
+    "path":"folders/Zone/Objects/Destructibles/Shared Assets.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

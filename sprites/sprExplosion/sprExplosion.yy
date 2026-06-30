@@ -29,8 +29,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Sprites",
-    "path":"folders/Zone/Objects/Motobug/Sprites.yy",
+    "name":"Shared Assets",
+    "path":"folders/Zone/Objects/Destructibles/Shared Assets.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

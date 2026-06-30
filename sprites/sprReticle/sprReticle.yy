@@ -26,8 +26,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"Effects",
-    "path":"folders/Zone/Player/Sprites/Effects.yy",
+    "name":"Reticle",
+    "path":"folders/Zone/Player/Effects/Reticle.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Bridge",
-    "path":"folders/Zone/Objects/Bridge.yy",
+    "name":"Sprites",
+    "path":"folders/Zone/Objects/Bridge/Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

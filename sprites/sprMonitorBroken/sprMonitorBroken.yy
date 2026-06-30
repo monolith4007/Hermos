@@ -26,7 +26,7 @@
   "origin":9,
   "parent":{
     "name":"Sprites",
-    "path":"folders/Zone/Objects/Monitor/Sprites.yy",
+    "path":"folders/Zone/Objects/Destructibles/Monitor/Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

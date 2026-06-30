@@ -9,8 +9,8 @@
   "name":"objFade",
   "overriddenProperties":[],
   "parent":{
-    "name":"Global",
-    "path":"folders/Global.yy",
+    "name":"Display",
+    "path":"folders/Global/Display.yy",
   },
   "parentObjectId":null,
   "persistent":false,
