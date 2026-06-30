@@ -1,5 +1,5 @@
 /// @description Attach / Animate
-if (not (owner.rolling and instance_exists(target)))
+if (not owner.rolling)
 {
 	instance_destroy();
 	exit;

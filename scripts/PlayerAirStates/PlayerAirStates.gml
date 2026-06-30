@@ -140,7 +140,7 @@ function player_is_jumping(phase)
 			if (jump_action & 1 != 0)
 			{
 				var target_found = instance_exists(objReticle);
-				var ind = collision_rectangle(x, y, x + 96 * image_xscale, y + 64, target_found ? objReticle : [objBadnik, objMonitor], false, false);
+				var ind = collision_rectangle(x, y, x + 96 * image_xscale, y + 64, target_found ? objReticle.target : [objBadnik, objMonitor], false, false);
 				if (ind != noone)
 				{
 					if (not target_found)
@@ -216,6 +216,7 @@ function player_is_homing(phase)
 		}
 		case PHASE.EXIT:
 		{
+			instance_destroy(objReticle);
 			break;
 		}
 	}
