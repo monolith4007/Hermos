@@ -5,6 +5,8 @@ var right = vx + CAMERA_WIDTH + sprite_width;
 var ratio = CAMERA_WIDTH / surface_get_width(application_surface);
 var top = 0;
 
+gpu_set_blendenable(false);
+
 // Clouds + ocean
 var left = vx + ((vx * 0.9 - clouds_offset - vx) mod sprite_width) - sprite_width;
 for (var ox = round(left / ratio) * ratio; ox <= right; ox += sprite_width)
@@ -38,3 +40,5 @@ for (ox = round(left / ratio) * ratio; ox <= right; ox += sprite_width)
 {
 	draw_sprite_part_ext(sprite_index, 0, 0, top, sprite_width, checkered_height, ox, vy, 1, image_yscale, c_white, 1);
 }
+
+gpu_set_blendenable(true);
