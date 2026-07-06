@@ -5,7 +5,7 @@ var pad = async_load[? "pad_index"];
 if (event == "gamepad discovered" and gp_device == -1)
 {
 	gp_device = pad;
-	buttons = [gp_padu, gp_padd, gp_padl, gp_padr, gp_face1];
+	buttons = [gp_padu, gp_padd, gp_padl, gp_padr, gp_face1, gp_start];
 }
 else if (event == "gamepad lost" and gp_device == pad)
 {

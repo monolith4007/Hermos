@@ -82,6 +82,7 @@
     {"id":{"name":"objMonitorIcon","path":"objects/objMonitorIcon/objMonitorIcon.yy",},},
     {"id":{"name":"objMotobug","path":"objects/objMotobug/objMotobug.yy",},},
     {"id":{"name":"objPathSwap","path":"objects/objPathSwap/objPathSwap.yy",},},
+    {"id":{"name":"objPause","path":"objects/objPause/objPause.yy",},},
     {"id":{"name":"objPlayer","path":"objects/objPlayer/objPlayer.yy",},},
     {"id":{"name":"objReticle","path":"objects/objReticle/objReticle.yy",},},
     {"id":{"name":"objRing","path":"objects/objRing/objRing.yy",},},

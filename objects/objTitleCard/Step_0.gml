@@ -76,7 +76,11 @@ switch (state)
 	case 7:
 	{
 		label_offset += exit_speed;
-		if (label_offset >= CAMERA_WIDTH) instance_destroy();
+		if (label_offset >= CAMERA_WIDTH)
+		{
+			ctrlZone.can_pause = true;
+			instance_destroy();
+		}
 		break;
 	}
 }

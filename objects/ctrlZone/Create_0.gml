@@ -1,5 +1,6 @@
 /// @description Initialize
 image_speed = 0;
+can_pause = false;
 
 // Timing
 stage_time = 0;

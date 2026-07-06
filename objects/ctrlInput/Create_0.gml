@@ -6,7 +6,7 @@ state = 0;
 previous_state = 0;
 
 // Keyboard codes
-keycodes = [vk_up, vk_down, vk_left, vk_right, ord("Z")];
+keycodes = [vk_up, vk_down, vk_left, vk_right, ord("Z"), vk_enter];
 
 // Gamepad data
 gp_device = -1;

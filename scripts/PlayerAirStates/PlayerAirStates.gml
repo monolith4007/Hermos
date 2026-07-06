@@ -268,7 +268,11 @@ function player_is_dead(phase)
 		case PHASE.ENTER:
 		{
 			y_speed = -7;
-			ctrlZone.time_enabled = false;
+			with (ctrlZone)
+			{
+				time_enabled = false;
+				can_pause = false;
+			}
 			instance_destroy(objCamera);
 			audio_play_sfx(sfxDeath);
 			
