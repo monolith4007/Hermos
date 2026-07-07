@@ -146,7 +146,7 @@ function player_is_jumping(phase)
 					if (not target_found)
 					{
 						target_found = true;
-						instance_create_depth(ind.x, ind.y, depth - 1, objReticle, { owner: id, target: ind });
+						instance_create_layer(ind.x, ind.y, layer, objReticle, { owner: id, target: ind });
 					}
 				}
 				else if (target_found)
