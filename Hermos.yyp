@@ -86,6 +86,7 @@
     {"id":{"name":"objPathSwap","path":"objects/objPathSwap/objPathSwap.yy",},},
     {"id":{"name":"objPause","path":"objects/objPause/objPause.yy",},},
     {"id":{"name":"objPlayer","path":"objects/objPlayer/objPlayer.yy",},},
+    {"id":{"name":"objProjectile","path":"objects/objProjectile/objProjectile.yy",},},
     {"id":{"name":"objReticle","path":"objects/objReticle/objReticle.yy",},},
     {"id":{"name":"objRing","path":"objects/objRing/objRing.yy",},},
     {"id":{"name":"objRingDropped","path":"objects/objRingDropped/objRingDropped.yy",},},
