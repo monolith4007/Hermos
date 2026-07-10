@@ -80,4 +80,11 @@ with (sprite_particles)
 }
 
 // Start the game!
-call_later(1, time_source_units_frames, room_goto_next);
+call_later(1, time_source_units_frames, function ()
+{
+	instance_create_layer(0, 0, "Master", ctrlWindow);
+	instance_create_layer(0, 0, "Master", ctrlInput);
+	instance_create_layer(0, 0, "Master", ctrlMusic);
+	
+	room_restart();
+});

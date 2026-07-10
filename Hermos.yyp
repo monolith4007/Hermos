@@ -100,7 +100,6 @@
     {"id":{"name":"objSpringDiagonal","path":"objects/objSpringDiagonal/objSpringDiagonal.yy",},},
     {"id":{"name":"objTitleCard","path":"objects/objTitleCard/objTitleCard.yy",},},
     {"id":{"name":"objZoneObject","path":"objects/objZoneObject/objZoneObject.yy",},},
-    {"id":{"name":"rmStartup","path":"rooms/rmStartup/rmStartup.yy",},},
     {"id":{"name":"rmTest","path":"rooms/rmTest/rmTest.yy",},},
     {"id":{"name":"AudioPlayback","path":"scripts/AudioPlayback/AudioPlayback.yy",},},
     {"id":{"name":"GameStartup","path":"scripts/GameStartup/GameStartup.yy",},},
@@ -199,7 +198,6 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
-    {"roomId":{"name":"rmStartup","path":"rooms/rmStartup/rmStartup.yy",},},
     {"roomId":{"name":"rmTest","path":"rooms/rmTest/rmTest.yy",},},
   ],
   "templateType":"game",
