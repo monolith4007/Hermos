@@ -1,0 +1,12 @@
+{
+  "$GMShader":"",
+  "%Name":"shdPaletteSwap",
+  "name":"shdPaletteSwap",
+  "parent":{
+    "name":"Palette",
+    "path":"folders/Zone/Player/Effects/Palette.yy",
+  },
+  "resourceType":"GMShader",
+  "resourceVersion":"2.0",
+  "type":1,
+}

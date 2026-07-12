@@ -3,7 +3,17 @@ var x_int = x div 1;
 var y_int = y div 1;
 
 // Sprite
-if (sprite_index != -1) draw_sprite_ext(sprite_index, image_index, x_int, y_int, image_xscale, 1, image_angle, c_white, image_alpha);
+if (sprite_index != -1)
+{
+	shader_set(shdPaletteSwap);
+	
+	var samp_targets = shader_get_sampler_index(shdPaletteSwap, "samp_targets");
+	texture_set_stage(samp_targets, sprite_get_texture(sprSonicPalette, 0));
+	
+	draw_sprite_ext(sprite_index, image_index, x_int, y_int, image_xscale, 1, image_angle, c_white, image_alpha);
+	
+	shader_reset();
+}
 
 // Dash smoke
 if (state == player_is_spindashing or state == player_is_peelouting)
