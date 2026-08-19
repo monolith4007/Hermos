@@ -1,7 +1,7 @@
 /// @description Initialize
-if (force > 10) sprite_index = sprSpringRedDiagonal;
 image_speed = 0;
 image_index = 1;
+force = sprite_index == sprSpringRedDiagonal ? 16 : 10;
 
 reaction = function (ind)
 {

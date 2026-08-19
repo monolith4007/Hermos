@@ -1,7 +1,7 @@
 /// @description Initialize
 event_inherited();
-if (force > 10) sprite_index = sprSpringRed;
 image_index = 1;
+force = sprite_index == sprSpringRed ? 16 : 10;
 
 reaction = function (ind)
 {
