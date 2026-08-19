@@ -9,7 +9,7 @@ vspeed = 0;
 gravity = 0;
 alarm[0] = 32;
 
-with (owner) switch (other.image_index)
+with (objPlayer) switch (other.image_index)
 {
 	case ICON.RING:
 	{

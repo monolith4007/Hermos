@@ -97,9 +97,7 @@ function player_is_running(phase)
 			if (input_check_pressed(INPUT.ACTION)) return player_perform(player_is_jumping);
 			
 			// Handle ground motion
-			var can_brake = false;
 			var input_sign = input_check(INPUT.RIGHT) - input_check(INPUT.LEFT);
-			
 			if (control_lock_time == 0)
 			{
 				if (input_sign != 0)
@@ -107,7 +105,16 @@ function player_is_running(phase)
 					// Decelerate
 					if (sign(x_speed) == -input_sign)
 					{
-						can_brake = true;
+						// Brake
+						if (animation != "brake" and mask_direction == gravity_direction and abs(x_speed) >= 4)
+						{
+							audio_play_sfx(sfxBrake);
+							player_animate("brake");
+							timeline_speed = 1;
+							image_angle = gravity_direction;
+							image_xscale = -input_sign;
+						}
+						
 						x_speed += deceleration * input_sign;
 						if (sign(x_speed) == input_sign) x_speed = deceleration * input_sign; // Reverse direction
 					}
@@ -115,10 +122,7 @@ function player_is_running(phase)
 					{
 						// Accelerate
 						image_xscale = input_sign;
-						if (abs(x_speed) < speed_cap)
-						{
-							x_speed = min(abs(x_speed) + acceleration, speed_cap) * input_sign;
-						}
+						if (abs(x_speed) < speed_cap) x_speed = min(abs(x_speed) + acceleration, speed_cap) * input_sign;
 					}
 				}
 				else
@@ -126,16 +130,6 @@ function player_is_running(phase)
 					// Friction (same value as acceleration)
 					x_speed -= min(abs(x_speed), acceleration) * sign(x_speed);
 				}
-			}
-			
-			// Slope friction
-			player_resist_slope(0.125);
-			
-			// Roll
-			if (input_sign == 0 and abs(x_speed) >= roll_threshold and input_check(INPUT.DOWN))
-			{
-				audio_play_sfx(sfxRoll);
-				return player_perform(player_is_rolling);
 			}
 			
 			// Animate
@@ -157,12 +151,9 @@ function player_is_running(phase)
 				if (animation != new_anim) player_animate(new_anim);
 				timeline_speed = 1 / max(8 - velocity, 1);
 				
-				// Update visual angle
+				// Rotate
 				var target_angle = local_direction >= 34 and local_direction <= 326 ? direction : gravity_direction;
-				if (image_angle != target_angle)
-				{
-					image_angle += angle_difference(target_angle, image_angle) / (velocity < 6 ? 4 : 2);
-				}
+				if (image_angle != target_angle) image_angle += angle_difference(target_angle, image_angle) / (velocity < 6 ? 4 : 2);
 			}
 			
 			// Move
@@ -171,6 +162,9 @@ function player_is_running(phase)
 			
 			// Fall
 			if (not on_ground) return player_perform(player_is_falling);
+			
+			// Slope friction
+			player_resist_slope(0.125);
 			
 			// Slide down steep slopes
 			if (abs(x_speed) < slide_threshold and mask_direction != gravity_direction)
@@ -182,18 +176,15 @@ function player_is_running(phase)
 				control_lock_time = slide_duration;
 			}
 			
+			// Roll
+			if (input_sign == 0 and abs(x_speed) >= roll_threshold and input_check(INPUT.DOWN))
+			{
+				audio_play_sfx(sfxRoll);
+				return player_perform(player_is_rolling);
+			}
+			
 			// Stand
 			if (x_speed == 0 and input_sign == 0) return player_perform(player_is_standing);
-			
-			// Brake
-			if (can_brake and mask_direction == gravity_direction and abs(x_speed) >= 4 and animation != "brake")
-			{
-				audio_play_sfx(sfxBrake);
-				player_animate("brake");
-				timeline_speed = 1;
-				image_angle = gravity_direction;
-				image_xscale = -input_sign;
-			}
 			
 			// Push
 			if (wall_sign != 0 and input_sign == wall_sign and animation != "push")
@@ -351,14 +342,10 @@ function player_is_rolling(phase)
 					}
 					else image_xscale = input_sign;
 				}
+				
+				// Friction
+				x_speed -= min(abs(x_speed), roll_friction) * sign(x_speed);
 			}
-			
-			// Friction
-			x_speed -= min(abs(x_speed), roll_friction) * sign(x_speed);
-			
-			// Slope friction
-			var slope_friction = sign(x_speed) == sign(dsin(local_direction)) ? 0.078125 : 0.3125; // Uphill / downhill
-			player_resist_slope(slope_friction);
 			
 			// Move
 			player_move_on_ground();
@@ -366,6 +353,10 @@ function player_is_rolling(phase)
 			
 			// Fall
 			if (not on_ground) return player_perform(player_is_falling);
+			
+			// Slope friction
+			var slope_friction = sign(x_speed) == sign(dsin(local_direction)) ? 0.078125 : 0.3125; // Uphill / downhill
+			player_resist_slope(slope_friction);
 			
 			// Slide down steep slopes
 			if (abs(x_speed) < slide_threshold and mask_direction != gravity_direction)

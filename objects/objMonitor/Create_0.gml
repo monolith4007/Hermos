@@ -35,8 +35,7 @@ reaction = function (ind)
 				image_index: icon,
 				vspeed: -3,
 				gravity: 0.09375,
-				alarm: 32, // Defaults to Alarm 0 (using [] in struct entries is not permitted)
-				owner: other.id
+				alarm: 32 // Defaults to Alarm 0 (using [] in struct entries is not permitted)
 			});
 			instance_destroy();
 		}

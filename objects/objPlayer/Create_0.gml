@@ -61,6 +61,7 @@ repeat (4) event_user(n++);
 
 // Misc.
 instance_create_layer(x, y, layer, objCamera, { gravity_direction });
+rings_for_life = 99;
 badnik_chain = 0;
 shield = noone;
 invincibility_effect = noone;

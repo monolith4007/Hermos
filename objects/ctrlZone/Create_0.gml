@@ -1,5 +1,6 @@
 /// @description Initialize
 image_speed = 0;
+global.rings = 0;
 can_pause = false;
 
 // Timing
@@ -38,7 +39,3 @@ if (tilemaps[1] == -1) array_delete(tilemaps, 1, 2);
 instance_create_layer(0, 0, "Master", objTitleCard, { name, act });
 instance_create_layer(0, 0, "Master", objHUD, { image_speed: 0 });
 instance_create_layer(0, 0, "ZoneObjects", objSplashHillBG);
-
-// Reset ring counters
-global.rings = 0;
-global.rings_for_life = 99;

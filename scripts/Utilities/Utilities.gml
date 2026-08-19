@@ -8,7 +8,7 @@ function angle_wrap(ang)
 
 /// @description Checks if the given instance is visible within the game view.
 /// @param {Asset.GMObject|Id.Instance} [ind] Object or instance to check (optional, default is the calling instance).
-/// @param {Real} [padding] Distance to extend the size of the view when checking (optional, default is the CAMERA_PADDING macro).
+/// @param {Real} [padding] Distance to check outside of the view (optional, default is the CAMERA_PADDING macro).
 /// @returns {Bool}
 function instance_in_view(ind = id, padding = CAMERA_PADDING)
 {

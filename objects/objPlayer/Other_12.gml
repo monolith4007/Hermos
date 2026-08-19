@@ -60,12 +60,6 @@ player_ground = function (attach)
 		on_ground = false;
 		objCamera.on_ground = false;
 		
-		if (direction != gravity_direction)
-		{
-			direction = gravity_direction;
-			local_direction = 0;
-		}
-		
 		if (mask_direction != gravity_direction)
 		{
 			mask_direction = gravity_direction;
@@ -111,26 +105,26 @@ player_ground = function (attach)
 player_detect_angle = function ()
 {
 	// Check for contact with the ground
-	var edge = 0;
-	if (player_raycast(hard_colliders, -x_radius, y_radius + 1)) edge |= 1;
-	if (player_raycast(hard_colliders, x_radius, y_radius + 1)) edge |= 2;
-	if (player_raycast(hard_colliders, 0, y_radius + 1)) edge |= 4;
+	var ray = 0;
+	if (player_raycast(hard_colliders, -x_radius, y_radius + 1)) ray |= 1;
+	if (player_raycast(hard_colliders, x_radius, y_radius + 1)) ray |= 2;
+	if (player_raycast(hard_colliders, 0, y_radius + 1)) ray |= 4;
 	
-	if (edge == 0) exit;
+	if (ray == 0) exit;
 	
 	// Set new angle values
-	if (edge & (edge - 1) == 0) // Check for only one point (power of 2 calculation)
+	if (ray & (ray - 1) == 0) // Check for only one point (power of 2 calculation)
 	{
 		// Calculate offset point
 		var ox = x + mask_sin * y_radius;
 		var oy = y + mask_cos * y_radius;
 		
-		if (edge == 1)
+		if (ray == 1)
 		{
 			ox -= mask_cos * x_radius;
 			oy += mask_sin * x_radius;
 		}
-		else if (edge == 2)
+		else if (ray == 2)
 		{
 			ox += mask_cos * x_radius;
 			oy -= mask_sin * x_radius;

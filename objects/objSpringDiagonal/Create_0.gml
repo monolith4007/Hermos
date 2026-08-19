@@ -11,22 +11,25 @@ reaction = function (ind)
 	// Bounce
 	var rotation_offset = 45 + ind.image_angle - mask_direction;
 	x_speed = -dsin(rotation_offset) * ind.force;
+	y_speed = -dcos(rotation_offset) * ind.force;
 	image_xscale = sign(x_speed);
 	
-	// Falling state sets the player's y-speed; switch to it before rising
-	var y_spring_speed = -dcos(rotation_offset) * ind.force;
-	if (y_spring_speed < 0)
+	// Rise, if applicable
+	if (y_speed < 0)
 	{
-		player_perform(player_is_falling);
 		player_animate("rise");
-		
-		if (rolling)
+		if (state != player_is_falling)
 		{
-			rolling = false;
-			badnik_chain = 0;
+			player_perform(player_is_falling, false);
+			if (on_ground) player_ground(false);
+			
+			if (rolling)
+			{
+				rolling = false;
+				badnik_chain = 0;
+			}
 		}
 	}
-	y_speed = y_spring_speed;
 	
 	// Animate spring
 	ind.image_index = 0;

@@ -53,6 +53,7 @@ TrianglyRU, Michael Gallinago - Orbinaut Framework.
 
 Brandon Beauregard (AKA TruePowerofTeamwork, Tpot-SSL) - Sonic MAX Engine.
 * https://sonicfangameshq.com/forums/showcase/sonic-max.25/
+* https://github.com/Tpot-SSL/Sonic-MAX
 
 > Used as references for certain object behaviors within the classic Sonic games, and other optimizations.
 

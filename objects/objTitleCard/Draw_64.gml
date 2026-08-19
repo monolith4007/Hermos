@@ -28,7 +28,7 @@ if (banner_offset > -fold_width)
 	var fold_height = sprite_get_height(sprTitleCardFold);
 	for (var oy = image_index mod 32 < 16 ? -fold_height * 0.5 : 0; oy < CAMERA_HEIGHT; oy += fold_height)
 	{
-		draw_sprite(sprTitleCardFold, 0, banner_offset + 1, oy);
+		draw_sprite(sprTitleCardFold, 0, banner_offset, oy);
 	}
 }
 

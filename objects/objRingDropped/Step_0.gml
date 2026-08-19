@@ -5,7 +5,7 @@ if (not instance_in_view())
 	exit;
 }
 
-// Resolve movement and collision on separate axes
+// Move and collide on separate axes
 var dx = gravity_cos * x_speed;
 var dy = gravity_sin * x_speed;
 x += dx;

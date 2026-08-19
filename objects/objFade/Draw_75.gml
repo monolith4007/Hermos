@@ -8,4 +8,4 @@ gpu_set_blendmode(bm_subtract);
 draw_rectangle_color(0, 0, CAMERA_WIDTH, CAMERA_HEIGHT, color, color, color, color, false);
 gpu_set_blendmode(bm_normal);
 
-if (image_index > 1) room_goto(target_room);
+if (image_index >= 1) room_goto(target_room);

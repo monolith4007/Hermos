@@ -22,11 +22,11 @@ player_gain_rings = function (num)
 	audio_play_sfx(sfxRing);
 	
 	// Gain lives
-	if (global.rings > global.rings_for_life)
+	if (global.rings > rings_for_life)
 	{
 		num = global.rings div 100;
-		player_gain_lives(num - global.rings_for_life div 100);
-		global.rings_for_life = num * 100 + 99;
+		player_gain_lives(num - rings_for_life div 100);
+		rings_for_life = num * 100 + 99;
 	}
 };
 
@@ -61,16 +61,9 @@ player_damage = function (ind)
 	
 	// Recoil
 	player_perform(player_is_hurt);
-	
+	y_speed = -4;
 	x_speed = 2 * sign(x - ind.x);
 	if (x_speed == 0) x_speed = 2;
-	y_speed = -4;
-	
-	if (rolling)
-	{
-		rolling = false;
-		badnik_chain = 0;
-	}
 };
 
 /// @method player_drop_rings
@@ -82,8 +75,6 @@ player_drop_rings = function ()
 	audio_play_sfx(sfxRingLoss);
 	
 	var tilemaps = ctrlZone.tilemaps; // Initialized here to reduce the number of dot operator usages
-	var gravity_sin = dsin(gravity_direction);
-	var gravity_cos = dcos(gravity_direction);
 	var spd = 4;
 	var dir = 101.25;
 	
@@ -91,10 +82,12 @@ player_drop_rings = function ()
 	{
 		var ind = instance_create_layer(x, y, layer, objRingDropped,
 		{
-			tilemaps, gravity_direction,
-			gravity_sin, gravity_cos,
+			image_angle: gravity_direction,
+			gravity_sin: mask_sin,
+			gravity_cos: mask_cos,
 			x_speed: lengthdir_x(spd, dir),
-			y_speed: lengthdir_y(spd, dir)
+			y_speed: lengthdir_y(spd, dir),
+			tilemaps
 		});
 		
 		if (total & 1 != 0)
