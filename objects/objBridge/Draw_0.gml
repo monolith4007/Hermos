@@ -1,22 +1,19 @@
 /// @description Draw
-var offset = ratio * sprite_width;
-for (var n = 0; n < sprite_width; n += node_width)
+for (var log = 0; log < image_xscale; ++log)
 {
-	// Get relative tension
 	var height = tension;
-	if (n < offset)
+	if (log < log_current)
 	{
-		height *= dsin((n / offset) * 90);
+		height *= log / log_current;
 	}
-	else if (n > offset)
+	else if (log > log_current)
 	{
-		height *= dsin(((sprite_width - n) / (sprite_width - offset)) * 90);
+		height *= (image_xscale - log) / (image_xscale - log_current);
 	}
 	
-	// Logs
-	draw_sprite(sprite_index, 0, bbox_left + n, ystart + height);
+	draw_sprite(sprite_index, 0, x + log * log_width, ystart + height);
 }
 
-// Posts
+/*
 draw_sprite(sprBridgePost, 0, bbox_left - 16, ystart - 16);
 draw_sprite(sprBridgePost, 0, bbox_right, ystart - 16);

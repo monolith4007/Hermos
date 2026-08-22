@@ -1,5 +1,6 @@
 /// @description Initialize
 event_inherited();
-node_width = sprite_get_width(sprite_index);
+log_current = -1;
+log_width = sprite_get_width(sprite_index);
 tension = 0;
-ratio = 0;
+max_tension = image_xscale + image_xscale mod 2;
