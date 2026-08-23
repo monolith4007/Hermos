@@ -152,7 +152,7 @@ function player_is_running(phase)
 				timeline_speed = 1 / max(8 - velocity, 1);
 				
 				// Rotate
-				var target_angle = local_direction >= 34 and local_direction <= 326 ? direction : gravity_direction;
+				var target_angle = local_direction > 25 and local_direction < 335 ? direction : gravity_direction;
 				if (image_angle != target_angle) image_angle += angle_difference(target_angle, image_angle) / (velocity < 6 ? 4 : 2);
 			}
 			
