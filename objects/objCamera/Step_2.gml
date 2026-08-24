@@ -16,20 +16,16 @@ if (x_offset != 0 or y_offset != 0)
 }
 
 // Limit to view border
-var x_border = 8;
-ox = max(abs(ox) - x_border, 0) * sign(ox);
-
-if (not on_ground)
-{
-	var y_border = 32;
-	oy = max(abs(oy) - y_border, 0) * sign(oy);
-}
+var x_limit = 8;
+var y_limit = 32;
+ox = max(abs(ox) - x_limit, 0) * sign(ox);
+if (not on_ground) oy = max(abs(oy) - y_limit, 0) * sign(oy);
 
 // Limit movement speed
-var x_speed_cap = 16 * (alarm[0] == -1);
-var y_speed_cap = min(6 + abs(y - yprevious), 16);
-if (abs(ox) > x_speed_cap) ox = x_speed_cap * sign(ox);
-if (abs(oy) > y_speed_cap) oy = y_speed_cap * sign(oy);
+x_limit = 16 * (alarm[0] == -1);
+y_limit = min(6 + abs(y - yprevious), 16);
+if (abs(ox) > x_limit) ox = x_limit * sign(ox);
+if (abs(oy) > y_limit) oy = y_limit * sign(oy);
 
 // Move the view
 if (ox != 0 or oy != 0)
