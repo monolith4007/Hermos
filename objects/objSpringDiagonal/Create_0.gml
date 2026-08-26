@@ -18,16 +18,17 @@ reaction = function (ind)
 	if (y_speed < 0)
 	{
 		player_animate("rise");
+		
 		if (state != player_is_falling)
 		{
 			player_perform(player_is_falling, false);
 			if (on_ground) player_ground(false);
-			
-			if (rolling)
-			{
-				rolling = false;
-				badnik_chain = 0;
-			}
+		}
+		
+		if (rolling)
+		{
+			rolling = false;
+			badnik_chain = 0;
 		}
 	}
 	

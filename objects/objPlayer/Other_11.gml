@@ -127,7 +127,7 @@ player_get_collisions = function ()
 };
 
 /// @method player_calculate_angle
-/// @description Calculates the angle of the terrain found within a 16x16 area at the given point relative to the player's mask direction.
+/// @description Calculates the angle of the terrain found within a horizontal spacing of 16 pixels at the given point relative to the player's mask direction.
 /// @param {Real} x x-coordinate of the point.
 /// @param {Real} y y-coordinate of the point.
 /// @returns {Real}

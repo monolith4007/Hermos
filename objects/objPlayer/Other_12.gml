@@ -104,7 +104,7 @@ player_ground = function (attach)
 /// @description Sets the player's angle values.
 player_detect_angle = function ()
 {
-	// Check for contact with the ground
+	// Get points of contact with the ground
 	var ray = 0;
 	if (player_raycast(hard_colliders, -x_radius, y_radius + 1)) ray |= 1;
 	if (player_raycast(hard_colliders, x_radius, y_radius + 1)) ray |= 2;
@@ -112,10 +112,9 @@ player_detect_angle = function ()
 	
 	if (ray == 0) exit;
 	
-	// Set new angle values
-	if (ray & (ray - 1) == 0) // Check for only one point (power of 2 calculation)
+	// Set new angle values; calculate for only one contact point
+	if (ray & (ray - 1) == 0)
 	{
-		// Calculate offset point
 		var ox = x + mask_sin * y_radius;
 		var oy = y + mask_cos * y_radius;
 		
@@ -136,7 +135,7 @@ player_detect_angle = function ()
 };
 
 /// @method player_rotate_mask
-/// @description Updates the direction of the player's virtual mask on slopes.
+/// @description Updates the direction of the player's virtual mask on steep terrain.
 player_rotate_mask = function ()
 {
 	var diff = angle_difference(direction, mask_direction);
