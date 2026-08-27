@@ -64,7 +64,7 @@ Aleksander Norberg (AKA AleksNB, A.NB) - Starlight 8 Engine.
 Jonathan Peterson (AKA PixelatedPope) - Helpful GML Scripts.
 * https://github.com/PixelatedPope/HelpfulGMLScripts
 
-> Used its code for subpixel camera positioning and sprite rendering to fix certain graphical issues.
+> Previously used its code for subpixel camera positioning and sprite rendering to fix certain graphical issues.
 
 =============================================================================================================================
 

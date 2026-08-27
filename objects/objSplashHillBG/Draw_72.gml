@@ -1,47 +1,39 @@
 /// @description Draw
 var vx = camera_get_view_x(CAMERA_ID);
-var vy = camera_get_view_y(CAMERA_ID);
+var vy = camera_get_view_y(CAMERA_ID) * image_yscale;
 var right = vx + CAMERA_WIDTH;
-var ratio = CAMERA_WIDTH / surface_get_width(application_surface);
 var top = 0;
 
 gpu_set_blendenable(false);
 
-// Note: horizontal tiling to the left has not been added, so if a section scrolls to the right past the camera's x-position, it will not be drawn to the left.
-// This can be addressed by appending `mod sprite_width - sprite_width` when assigning to `left`.
-
-// Clouds + ocean
-var left = vx * 0.9 - clouds_offset;
-for (var ox = round(left / ratio) * ratio; ox < right; ox += sprite_width)
+// Clouds and ocean
+for (var ox = vx * 0.9 - clouds_offset; ox < right; ox += sprite_width)
 {
-	draw_sprite_part_ext(sprite_index, 0, 0, top, sprite_width, clouds_height, ox, vy, 1, image_yscale, c_white, 1);
+	draw_sprite_part(sprite_index, 0, 0, top, sprite_width, clouds_height, ox, vy);
 }
 top += clouds_height;
-vy += clouds_height * image_yscale;
+vy += clouds_height;
 
 // Rocks
-left = vx * 0.85;
-for (ox = round(left / ratio) * ratio; ox < right; ox += sprite_width)
+for (ox = vx * 0.85; ox < right; ox += sprite_width)
 {
-	draw_sprite_part_ext(sprite_index, 0, 0, top, sprite_width, rocks_height, ox, vy, 1, image_yscale, c_white, 1);
+	draw_sprite_part(sprite_index, 0, 0, top, sprite_width, rocks_height, ox, vy);
 }
 top += rocks_height;
-vy += rocks_height * image_yscale;
+vy += rocks_height;
 
 // Bushes
-left = vx * 0.8;
-for (ox = round(left / ratio) * ratio; ox < right; ox += sprite_width)
+for (ox = vx * 0.8; ox < right; ox += sprite_width)
 {
-	draw_sprite_part_ext(sprite_index, 0, 0, top, sprite_width, bushes_height, ox, vy, 1, image_yscale, c_white, 1);
+	draw_sprite_part(sprite_index, 0, 0, top, sprite_width, bushes_height, ox, vy);
 }
 top += bushes_height;
-vy += bushes_height * image_yscale;
+vy += bushes_height;
 
 // Checkerboard
-left = vx * 0.75;
-for (ox = round(left / ratio) * ratio; ox < right; ox += sprite_width)
+for (ox = vx * 0.75; ox < right; ox += sprite_width)
 {
-	draw_sprite_part_ext(sprite_index, 0, 0, top, sprite_width, checkered_height, ox, vy, 1, image_yscale, c_white, 1);
+	draw_sprite_part(sprite_index, 0, 0, top, sprite_width, checkered_height, ox, vy);
 }
 
 gpu_set_blendenable(true);
