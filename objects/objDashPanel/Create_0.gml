@@ -11,8 +11,9 @@ reaction = function (ind)
 		
 		audio_play_sfx(sfxPeelout);
 		image_xscale = ind.image_xscale;
-		x_speed = max(abs(x_speed), 12) * image_xscale;
 		control_lock_time = 16;
-		ind.alarm[0] = 5; // Abort subsequent reactions with the dash panel whilst inside it
+		
+		x_speed = max(abs(x_speed), 12) * image_xscale;
+		ind.alarm[0] = ind.sprite_width / x_speed; // Lock reaction until no longer intersecting
 	}
 };
