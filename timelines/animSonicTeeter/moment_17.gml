@@ -1,1 +1,1 @@
-/// @description Loop stub
+/// @description Loop (no-op)
