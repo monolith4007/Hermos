@@ -1,22 +1,19 @@
 /// @description Initialize
 image_speed = 0;
-
 playlist = ds_priority_create();
-music = -1;
+looping_music = [bgmMadGear];
+stream = -1;
 jingle = -1;
 
 play_music = function (ind)
 {
-	audio_stop_sound(music);
-	music = audio_play_sound(ind, 0, array_contains(looped_music, ind), global.volume_music * (jingle == -1));
+	audio_stop_sound(stream);
+	stream = audio_play_sound(ind, 0, array_contains(looping_music, ind), global.volume_music * (jingle == -1));
 };
 
-looped_music = [bgmMadGear];
-var set_music_loop = function (ind, loop_start, loop_end)
+var set_loop_points = function (ind, loop_start, loop_end)
 {
 	audio_sound_loop_start(ind, loop_start);
 	audio_sound_loop_end(ind, loop_end);
-	array_push(looped_music, ind);
+	array_push(looping_music, ind);
 };
-
-// Define music loop points here; looped music w/o loop points should be inserted into the `looped_music` array.

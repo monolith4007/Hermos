@@ -7,13 +7,13 @@ function audio_play_sfx(ind)
 	return audio_play_sound(ind, 1, false, global.volume_sound);
 }
 
-/// @description Plays the given music track as a jingle. Background music is muted until the jingle has finished playing.
+/// @description Plays the given music track as a jingle; background music is muted until the jingle has finished playing, at which point it fades in.
 /// @param {Asset.GMSound} ind Music track to play.
 function audio_play_jingle(ind)
 {
 	with (ctrlMusic)
 	{
-		if (jingle == -1) audio_sound_gain(music, 0);
+		if (jingle == -1) audio_sound_gain(stream, 0);
 		else audio_stop_sound(jingle);
 		
 		jingle = audio_play_sound(ind, 2, false, global.volume_music);
@@ -21,7 +21,7 @@ function audio_play_jingle(ind)
 	}
 }
 
-/// @description Adds the given music track to the playlist at the given priority. The track is played if it has the highest priority.
+/// @description Adds the given music track to the playlist, playing it if its given priority exceeds the background music's.
 /// @param {Asset.GMSound} ind Music track to add.
 /// @param {Real} priority Priority value to assign.
 function audio_enqueue_bgm(ind, priority)
@@ -40,7 +40,7 @@ function audio_enqueue_bgm(ind, priority)
 	}
 }
 
-/// @description Removes the given music track from the playlist. If it was playing, the track below is played next.
+/// @description Removes the given music track from the playlist; if it's the background music, the next prioritized track is played.
 /// @param {Asset.GMSound} ind Music track to remove.
 function audio_dequeue_bgm(ind)
 {
