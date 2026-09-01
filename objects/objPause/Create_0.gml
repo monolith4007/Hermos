@@ -6,10 +6,8 @@ audio_pause_all();
 instance_deactivate_layer("ZoneObjects");
 part_system_automatic_update(global.sprite_particles.system, false);
 
-with (ctrlMusic) if (jingle != -1)
-{
-	other.alarm[0] = alarm[0];
-	alarm[0] = -1;
-}
+alarm[0] = ctrlMusic.alarm[0];
+if (alarm[0] != -1) ctrlMusic.alarm[0] = -1;
+
 ctrlZone.time_enabled = false;
 ctrlWindow.image_speed = 0;

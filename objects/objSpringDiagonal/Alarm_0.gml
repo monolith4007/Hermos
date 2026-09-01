@@ -7,6 +7,6 @@ if (image_index == 0)
 else if (image_index == 1)
 {
 	image_index = 2;
-	alarm[0] = 7;
+	alarm[0] = 6;
 }
 else image_index = 1;
