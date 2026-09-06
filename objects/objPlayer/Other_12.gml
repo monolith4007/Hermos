@@ -104,19 +104,21 @@ player_ground = function (attach)
 /// @description Sets the player's angle values.
 player_detect_angle = function ()
 {
-	// Get points of contact with the ground
 	var ray = 0;
-	if (player_raycast(hard_colliders, -x_radius, y_radius + 1)) ray |= 1;
-	if (player_raycast(hard_colliders, x_radius, y_radius + 1)) ray |= 2;
-	if (player_raycast(hard_colliders, 0, y_radius + 1)) ray |= 4;
+	var height = y_radius + 1;
+	
+	// Get points of contact with the ground
+	if (player_raycast(hard_colliders, -x_radius, height)) ray |= 1;
+	if (player_raycast(hard_colliders, x_radius, height)) ray |= 2;
+	if (player_raycast(hard_colliders, 0, height)) ray |= 4;
 	
 	if (ray == 0) exit;
 	
 	// Set new angle values; calculate for only one contact point
 	if (ray & (ray - 1) == 0)
 	{
-		var ox = x + mask_sin * y_radius;
-		var oy = y + mask_cos * y_radius;
+		var ox = x + mask_sin * height;
+		var oy = y + mask_cos * height;
 		
 		if (ray == 1)
 		{

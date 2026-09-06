@@ -169,7 +169,7 @@ player_calculate_angle = function (ox, oy)
 	// Extend / regress angle sensors
 	for (var n = 0; n < 2; ++n)
 	{
-		repeat (16)
+		repeat (32)
 		{
 			if (collision_point(ox[n], oy[n], ind, true, false) == noone)
 			{
