@@ -100,30 +100,27 @@ function player_is_running(phase)
 			var input_sign = input_check(INPUT.RIGHT) - input_check(INPUT.LEFT);
 			if (control_lock_time == 0)
 			{
-				if (input_sign != 0)
+				// Decelerate
+				if (sign(x_speed) == -input_sign)
 				{
-					// Decelerate
-					if (sign(x_speed) == -input_sign)
+					// Brake
+					if (animation != "brake" and mask_direction == gravity_direction and abs(x_speed) >= 4)
 					{
-						// Brake
-						if (animation != "brake" and mask_direction == gravity_direction and abs(x_speed) >= 4)
-						{
-							audio_play_sfx(sfxBrake);
-							player_animate("brake");
-							timeline_speed = 1;
-							image_angle = gravity_direction;
-							image_xscale = -input_sign;
-						}
-						
-						x_speed += deceleration * input_sign;
-						if (sign(x_speed) == input_sign) x_speed = deceleration * input_sign; // Reverse direction
+						audio_play_sfx(sfxBrake);
+						player_animate("brake");
+						timeline_speed = 1;
+						image_angle = gravity_direction;
+						image_xscale = -input_sign;
 					}
-					else
-					{
-						// Accelerate
-						image_xscale = input_sign;
-						if (abs(x_speed) < speed_cap) x_speed = min(abs(x_speed) + acceleration, speed_cap) * input_sign;
-					}
+					
+					x_speed += deceleration * input_sign;
+					if (sign(x_speed) == input_sign) x_speed = deceleration * input_sign; // Reverse direction
+				}
+				else if (input_sign != 0)
+				{
+					// Accelerate
+					image_xscale = input_sign;
+					if (abs(x_speed) < speed_cap) x_speed = min(abs(x_speed) + acceleration, speed_cap) * input_sign;
 				}
 				else
 				{
