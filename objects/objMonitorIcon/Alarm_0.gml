@@ -24,12 +24,12 @@ with (objPlayer) switch (other.image_index)
 	}
 	case ICON.INVINCIBILITY:
 	{
-		if (invincibility_effect == noone)
+		if (invincibility == noone)
 		{
-			invincibility_effect = instance_create_layer(x, y, layer, objInvincibility, { owner: id });
+			invincibility = instance_create_layer(x, y, layer, objInvincibility, { owner: id });
 			with (shield) visible = false;
 		}
-		invincibility_effect.alarm[0] = 1200;
+		invincibility.alarm[0] = 1200;
 		audio_enqueue_bgm(bgmInvincibility, 1);
 		break;
 	}
@@ -42,7 +42,7 @@ with (objPlayer) switch (other.image_index)
 	{
 		if (shield == noone)
 		{
-			shield = instance_create_depth(x, y, depth - 1, objShield, { visible: invincibility_effect == noone, owner: id });
+			shield = instance_create_depth(x, y, depth - 1, objShield, { visible: invincibility == noone, owner: id });
 		}
 		audio_play_sfx(sfxShield);
 		break;

@@ -280,7 +280,7 @@ function player_is_dead(phase)
 				can_pause = false;
 			}
 			instance_destroy(objCamera);
-			audio_play_sfx(sfxDeath);
+			audio_play_sfx(sfxHit);
 			
 			// Animate
 			player_animate("dead");
@@ -305,7 +305,7 @@ function player_is_dead(phase)
 				{
 					instance_create_layer(0, 0, "Master", objFade, { target_room: room });
 				});
-				instance_destroy(invincibility_effect);
+				instance_destroy(invincibility);
 				instance_destroy(shield);
 				instance_destroy();
 			}

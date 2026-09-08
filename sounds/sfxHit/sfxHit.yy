@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"sfxDeath",
+  "%Name":"sfxHit",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -12,7 +12,7 @@
   "conversionMode":0,
   "duration":0.9006576,
   "exportDir":"",
-  "name":"sfxDeath",
+  "name":"sfxHit",
   "parent":{
     "name":"Sounds",
     "path":"folders/Zone/Player/Sounds.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sfxDeath.wav",
+  "soundFile":"sfxHit.wav",
   "volume":1.0,
 }

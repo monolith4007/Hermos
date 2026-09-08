@@ -45,11 +45,11 @@ player_gain_lives = function (num)
 player_damage = function (ind)
 {
 	// Abort if invulnerable
-	if (recovery_time > 0 or state == player_is_hurt or invincibility_effect != noone) exit;
+	if (recovery_time > 0 or state == player_is_hurt or invincibility != noone) exit;
 	
 	if (shield != noone)
 	{
-		audio_play_sfx(sfxDeath);
+		audio_play_sfx(sfxHit);
 		instance_destroy(shield);
 		shield = noone;
 	}
