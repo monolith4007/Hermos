@@ -21,7 +21,7 @@ player_escape_wall = function (ind)
 					y += mask_sin * (x_wall_radius - ox);
 					return 1;
 				}
-				else if (collision_point(x_int - mask_cos * (ox + 1), y_int + mask_sin * (ox + 1), ind, true, false) != noone)
+				else
 				{
 					x += mask_cos * (x_wall_radius - ox);
 					y -= mask_sin * (x_wall_radius - ox);
