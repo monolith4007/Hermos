@@ -28,6 +28,7 @@ surface_depth_disable(true);
 gpu_set_zwriteenable(false);
 
 // Misc.
+gml_pragma("UnityBuild", "true");
 gc_target_frame_time(-100);
 show_debug_overlay(true);
 randomize();

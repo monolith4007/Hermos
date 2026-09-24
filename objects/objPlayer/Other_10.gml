@@ -40,7 +40,7 @@ player_move_on_ground = function ()
 		}
 		
 		// Detect floor
-		if (player_boxcast(hard_colliders, floor_reach))
+		if (y_speed == 0 and player_boxcast(hard_colliders, floor_reach))
 		{
 			player_ground(true);
 			player_rotate_mask();
